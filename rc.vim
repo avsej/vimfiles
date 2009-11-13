@@ -1,0 +1,251 @@
+if (($term == "rxvt-unicode") || ($term =~ "xterm") || ($term =~ "screen")) && (&termencoding == "")
+    set termencoding=utf-8
+endif
+" TODO: research
+"if has("vms")
+"  set nobackup
+"else
+"  set backup
+"endif
+
+set encoding=utf-8
+set fileencodings=utf-8,windows-1251,iso-8859-15,koi8-r
+set nocompatible
+"set fileformat=unix
+set viminfo='1000,f1,:1000,/1000
+set autowrite
+set autoindent
+set history=128
+set guifont=monospace\ 8
+set printfont=DejaVu\ Sans\ Mono\ 8
+set printencoding=utf-8
+set printoptions=paper:a4,wrap:y,syntax:n
+set gcr=a:blinkwait0,a:block-cursor
+if has("gui_running")
+  "set lines=40 columns=130
+  set background=light
+  colorscheme default
+endif
+let mapleader = ","
+set directory=~/.vim/tmp
+set backspace=indent,eol,start
+set ruler
+set shortmess=ati
+set showcmd
+set showfulltag
+set showmode
+set splitbelow
+set scrolloff=3
+set sidescrolloff=2
+set sessionoptions=curdir,buffers
+set mouse=a
+if (v:version == 603 && has("patch045")) || (v:version > 603)
+	set modeline
+	set modelines=1
+else
+	set nomodeline
+endif
+"set laststatus=0 " but show status for ruby, c etc.
+set laststatus=2
+set statusline=
+set statusline+=%-3.3n\                      " buffer number
+set statusline+=%f\                          " file name
+set statusline+=%h%m%r%w                     " flags
+set statusline+=\[%{strlen(&ft)?&ft:'none'}, " filetype
+set statusline+=%{&encoding}                 " encoding
+set statusline+=%{((exists(\"+bomb\")\ &&\ &bomb)?\"b,\":\"\")}, " bom
+set statusline+=%{&fileformat},              " file format
+set statusline+=%{GitBranch()}]
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%= " right align
+set statusline+=0x%-8b\                      " current char
+set statusline+=%-14.(%l,%c%)\ %<%p        " offset
+
+" Слова откуда будем завершать
+set complete=""
+" Из текущего буфера
+set complete+=.
+" Из словаря
+set complete+=k
+" Из других открытых буферов
+set complete+=b
+" из тегов
+set complete+=t
+set completeopt-=preview
+set completeopt+=longest
+
+set noerrorbells
+set hlsearch
+set incsearch
+set showmatch
+set matchtime=1
+set lazyredraw
+
+"set comments=b:#,:%,fb:-,n:>,n:)
+set comments=sr:/*,mb:\ *,el:*/,://,b:#,:%,:xcomm,n:>,n:),fb:-
+"set formatoptions=cqrt
+set formatoptions=tcrqn
+set joinspaces
+set whichwrap+=<,>,[,]
+set linebreak
+set nowrap
+set hidden
+set winminheight=1
+set shiftround
+"set ignorecase
+"set smartcase
+"set infercase
+syntax enable
+if has('gui')
+	set guioptions-=m
+	set guioptions-=t
+	set guioptions-=T
+	set guioptions-=l
+	set guioptions-=l
+	set guioptions-=r
+	set guioptions-=r
+end
+
+set wildmode=list:longest
+set wildmenu
+set wildignore=*.o,*.obj,*~
+
+" enable filetype settings
+filetype on
+filetype plugin on
+filetype indent on
+
+" Quick jumping between splits
+nnoremap Y y$
+vnoremap < <gv
+vnoremap > >gv
+
+set dictionary=/usr/share/dict/words
+set number
+
+set grepprg=grep\ -nH\ $*
+
+"if has("autocmd") && exists("+omnifunc")
+augroup cynapses autocmd!
+	autocmd cursorhold * nohls | redraw
+	autocmd bufenter * syntax sync fromstart
+	autocmd filetype help nmap <buffer> <return> <c-]>
+	autocmd filetype python set omnifunc=pythoncomplete#Complete
+	autocmd filetype javascript set omnifunc=javascriptcomplete#CompleteJS
+	autocmd filetype html set omnifunc=htmlcomplete#CompleteTags
+	autocmd filetype css set omnifunc=csscomplete#CompleteCSS
+	autocmd filetype xml set omnifunc=xmlcomplete#CompleteTags
+	autocmd filetype php set omnifunc=phpcomplete#CompletePHP
+	autocmd filetype sql set omnifunc=sqlcomplete#Complete
+	autocmd Filetype *
+		\ if &omnifunc == "" |
+		\ 	setlocal omnifunc=syntaxcomplete#Complete |
+		\ endif
+
+	autocmd bufnewfile,bufread /*/*bash*completion*/*
+		\ if expand("<amatch>") !~# "changelog" |
+		\ 	let b:is_bash = 1 | set filetype=sh |
+		\ endif
+
+	if ($term =~ "screen")
+		autocmd vimleave * :set term=screen
+	endif
+	try
+		autocmd quickfixcmdpost * :cwindow 10
+	catch
+	endtry
+augroup end
+
+
+nmap <silent> <f3> :silent nohlsearch<cr>
+imap <silent> <f3> <c-o>:silent nohlsearch<cr>
+set pastetoggle=<f12>
+noremap <leader>i i<space><esc>r
+noremap <leader>dbl :g/^$/d<cr>:nohls<cr> runtime! macros/matchit.vim
+let c_space_errors = 1
+"let c_no_tab_space_error = 1
+let omnicpp_namespacesearch = 2
+"let omnicpp_selectfirstitem = 2
+"let g:autotagctagscmd = "ctags --c++-kinds=+p --fields=+ias --extra=+q"
+
+" timestamps for special files
+let g:use_timestamp = 1
+
+" git
+let g:git_diff_spawn_mode = 1
+
+" manpage view
+let g:manpageview_winopen = "hsplit="
+let g:manpageview_multimanpage = 0
+
+" vim specific options
+let g:vimsyntax_noerror=1
+
+" settings minibufexpl.vim
+let g:minibufexplmodseltarget = 1
+let g:minibufexplwinfixheight = 1
+
+" bash case indet level
+let g:sh_indent_case_labels=1
+
+highlight specialkey ctermfg=red guifg=red
+set list listchars=tab:>\ ,trail:·
+" settings for explorer.vim
+let g:explhidefiles='^\.'
+" settings for netrw
+let g:netrw_list_hide='^\.,\~$'
+" settings for :tohtml
+let html_number_lines=1
+let html_use_css=1
+" let use_xhtml=1
+
+" cscope settings
+if has('cscope') && filereadable("/usr/bin/cscope")
+  set csto=0
+  set cscopetag
+  set nocsverb
+  if filereadable("cscope.out")
+    cs add cscope.out
+  endif
+  set csverb
+
+  let x = "sgctefd"
+  while x != ""
+    let y = strpart(x, 0, 1) | let x = strpart(x, 1)
+      exec "nmap <c-j>" . y . " :cscope find " . y .
+            \ " <c-r>=expand(\"\<cword\>\")<cr><cr>"
+      exec "nmap <c-j><c-j>" . y . " :scscope find " . y .
+            \ " <c-r>=expand(\"\<cword\>\")<cr><cr>"
+  endwhile
+  nmap <c-j>i      :cscope find i ^<c-r>=expand("<cword>")<cr><cr>
+  nmap <c-j><c-j>i :scscope find i ^<c-r>=expand("<cword>")<cr><cr>
+  " 0 or s: find this c symbol
+  " 1 or g: find this definition
+  " 2 or d: find functions called by this function
+  " 3 or c: find functions calling this function
+  " 4 or t: find this text string
+  " 6 or e: find this egrep pattern
+  " 7 or f: find this file
+  " 8 or i: find files #including this file
+endif
+
+au bufreadpost *.pdf silent %!pdftotext -nopgbrk "%" - |fmt -csw78
+au bufreadpost *.doc silent %!antiword "%"
+au bufreadpost *.odt silent %!odt2txt "%"
+
+let g:lustyjugglershowkeys = 'a'
+nmap <silent> <Leader>lg :Gpicker<cr>
+"nmap <silent> <Leader>f :FilesystemExplorer<cr>
+"nmap <silent> <Leader>r :FilesystemExplorerFromHere<cr>
+"nmap <silent> <Leader>b :BufferExplorer<cr>
+
+set langmap=йq,цw,уe,кr,еt,нy,гu,шi,щo,зp,х[,ъ],фa,ыs,вd,аf,пg,рh,оj,лk,дl,ж\\;,э',яz,чx,сc,мv,иb,тn,ьm,б\\,,ю.,ё`,ЙQ,ЦW,УE,КR,ЕT,НY,ГU,ШI,ЩO,ЗP,Х{,Ъ},ФA,ЫS,ВD,АF,ПG,РH,ОJ,ЛK,ДL,Ж:,Э\\",ЯZ,ЧX,СC,МV,ИB,ТN,ЬM,Б<,Ю>,Ё~
+let g:calendar_monday = 1
+
+au BufNewFile,BufRead *.prawn	set ft=ruby
+au BufNewFile,BufRead *.cap	set ft=ruby
+autocmd! BufNewFile * silent! 0r ~/.vim/skel/tmpl.%:e
+
+source ~/.vim/etc/abbrev.vim
+
+" vim:sw=2:sts=2:et:
