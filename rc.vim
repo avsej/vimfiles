@@ -12,7 +12,7 @@ set encoding=utf-8
 set fileencodings=utf-8,windows-1251,iso-8859-15,koi8-r
 set nocompatible
 "set fileformat=unix
-set viminfo='1000,f1,:1000,/1000
+set viminfo=<1000,s100,'1000,f1,:1000,/1000,n~/.vim/.viminfo
 set autowrite
 set autoindent
 set history=128
