@@ -30,6 +30,7 @@ let mapleader = ","
 set directory=~/.vim/tmp
 set backspace=indent,eol,start
 set ruler
+set title
 set shortmess=ati
 set showcmd
 set showfulltag
