@@ -8,7 +8,7 @@ endif
 "  set backup
 "endif
 
-set encoding=utf-8
+set encoding=utf8
 set fileencodings=utf-8,windows-1251,iso-8859-15,koi8-r
 set spelllang=ru,en
 set nocompatible
@@ -17,9 +17,8 @@ set viminfo=<1000,s100,'1000,f1,:1000,/1000,n~/.vim/.viminfo
 set autowrite
 set autoindent
 set history=128
-set guifont=monospace\ 8
-set printfont=DejaVu\ Sans\ Mono\ 8
-set printencoding=utf-8
+set guifont=DejaVu\ Sans\ Mono\ 8
+set printencoding=utf8
 set printoptions=paper:a4,wrap:y,syntax:n
 set gcr=a:blinkwait0,a:block-cursor
 if has("gui_running")
