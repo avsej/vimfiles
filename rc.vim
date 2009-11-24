@@ -68,12 +68,12 @@ set complete=""
 " Из текущего буфера
 set complete+=.
 " Из словаря
-set complete+=k
+"set complete+=k
 " Из других открытых буферов
-set complete+=b
+"set complete+=b
 " из тегов
 set complete+=t
-set completeopt-=preview
+set completeopt+=preview
 set completeopt+=longest
 
 set noerrorbells
@@ -122,7 +122,7 @@ nnoremap Y y$
 vnoremap < <gv
 vnoremap > >gv
 
-set dictionary=/usr/share/dict/words
+"set dictionary=/usr/share/dict/words
 set number
 
 set grepprg=grep\ -nH\ $*
