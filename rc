@@ -251,4 +251,4 @@ autocmd! BufNewFile * silent! 0r ~/.vim/skel/tmpl.%:e
 
 source ~/.vim/etc/abbrev.vim
 
-" vim:sw=2:sts=2:et:
+" vim:ft=vim:sw=2:sts=2:et:
