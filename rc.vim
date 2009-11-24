@@ -75,6 +75,7 @@ set complete+=.
 set complete+=t
 set completeopt+=preview
 set completeopt+=longest
+highlight Pmenu ctermbg=238 gui=bold
 
 set noerrorbells
 set hlsearch
