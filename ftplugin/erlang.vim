@@ -188,5 +188,6 @@ if !exists("*GetErlangFold")
 endif " }}}
 
 call s:SetErlangOptions()
+set listchars=tab:\ \ 
 
 " vim: set foldmethod=marker:
