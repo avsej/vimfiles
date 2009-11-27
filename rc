@@ -153,7 +153,7 @@ augroup cynapses autocmd!
 		autocmd vimleave * :set term=screen
 	endif
 	try
-		autocmd quickfixcmdpost * :cwindow 10
+"                autocmd quickfixcmdpost * :cwindow 10
 	catch
 	endtry
 augroup end
