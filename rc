@@ -80,13 +80,13 @@ set noerrorbells
 set hlsearch
 set incsearch
 set showmatch
-set matchtime=1
+"set matchtime=1
 set lazyredraw
 
 "set comments=b:#,:%,fb:-,n:>,n:)
 set comments=sr:/*,mb:\ *,el:*/,://,b:#,:%,:xcomm,n:>,n:),fb:-
 "set formatoptions=cqrt
-set formatoptions=tcrqn
+set formatoptions=tcawrqn
 set joinspaces
 set whichwrap+=<,>,[,]
 set linebreak
