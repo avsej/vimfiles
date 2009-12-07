@@ -27,11 +27,14 @@
 "
 "        Usage: To launch the gpicker:
 "
-"                 <Leader>g  - Opens the gpicker from current directory.
+"                 <Leader>lg - Opens the gpicker from current directory.
+"                 <Leader>m  - Opens the gpicker to chose from list of current
+"                 buffers.
 "
 "               You can also use the command:
 "
-"                 ":Gpicker"
+"                 ":GPickFile"
+"                 ":GPickFile"
 "
 
 " Exit quickly when already loaded.
@@ -39,12 +42,28 @@ if exists("g:loaded_gpicker")
   finish
 endif
 
-command Gpicker :call <SID>Gpicker()
-function! s:Gpicker()
-  let filename = substitute(system('gpicker -t guess .'), '\n\+', '', 'g')
+command GPickFile :call <SID>GPickFile()
+function! s:GPickFile()
+  let filename = system('gpicker -t guess .')
   if filereadable(filename)
     execute "edit " . filename
   endif
 endfunction
+
+command GPickBuffer :call <SID>GPickBuffer()
+function! s:GPickBuffer()
+  redir => ls_output
+  silent execute 'ls'
+  redir END
+
+  let items = strpart(substitute(ls_output, '"\(.\{-}\)"\s\{-}line\s\+\d\+', '\1', 'g'), 1)
+  let selected  = system('gpicker --name-separator \\n -', items)
+  let g:sel = selected
+  let g:result = substitute(selected, '\d\+\s\+[u%#ah=+x-]\+\s+', '', '')
+  execute "buffer " . substitute(selected, '\d\+\s\+[u%#ah=+x-]\+\s\+', '', '')
+endfunction
+
+nmap <silent> <leader>lg :GPickFile<cr>
+nmap <silent> <leader>m :GPickBuffer<cr>
 
 " vim:sw=2:sts=2:et:
