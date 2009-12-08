@@ -17,8 +17,8 @@
 "  Maintainers: Sergey Avseyev <sergey.avseyev@gmail.com>
 " Contributors:
 "
-" Release Date: October 20, 2009
-"      Version: 0.1
+" Release Date: December 7, 2009
+"      Version: 0.2
 "     Keywords: autocompletion
 "
 "      Install: Copy file into ~/.vim/plugin directory or put in .vimrc
@@ -34,7 +34,7 @@
 "               You can also use the command:
 "
 "                 ":GPickFile"
-"                 ":GPickFile"
+"                 ":GPickBuffer"
 "
 
 " Exit quickly when already loaded.
@@ -44,23 +44,27 @@ endif
 
 command GPickFile :call <SID>GPickFile()
 function! s:GPickFile()
+  " select file via gpicker
   let filename = system('gpicker -t guess .')
   if filereadable(filename)
+    " open selected file
     execute "edit " . filename
   endif
 endfunction
 
 command GPickBuffer :call <SID>GPickBuffer()
 function! s:GPickBuffer()
+  " grab list of buffers
   redir => ls_output
   silent execute 'ls'
   redir END
 
-  let items = strpart(substitute(ls_output, '"\(.\{-}\)"\s\{-}line\s\+\d\+', '\1', 'g'), 1)
+  " remove empty line from beginning and trailing line info
+  let items = strpart(substitute(ls_output, '\(\d\+\)\s\+\([u%#ah=+x-]\+\)\s\+"\(.\{-}\)"\s\{-}line\s\+\d\+', '\3   \2 \1', 'g'), 1)
+  " get selection via gpicker
   let selected  = system('gpicker --name-separator \\n -', items)
-  let g:sel = selected
-  let g:result = substitute(selected, '\d\+\s\+[u%#ah=+x-]\+\s+', '', '')
-  execute "buffer " . substitute(selected, '\d\+\s\+[u%#ah=+x-]\+\s\+', '', '')
+  " open buffer
+  execute "buffer " . substitute(selected, '\d\+\s\+[u%#ah=+x-]\+$', '', '')
 endfunction
 
 nmap <silent> <leader>lg :GPickFile<cr>
