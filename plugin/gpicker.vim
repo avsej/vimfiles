@@ -78,14 +78,16 @@ function! s:GPickRiDoc()
   " get selection via gpicker
   let l:selected  = system('ruby riwrap.rb | gpicker --name-separator \\n -')
 
-  " open buffer
-  execute "new " . l:selected
-  setlocal buftype=nofile readonly modifiable
-  setlocal bufhidden=wipe
-  let l:contents = system('ri ' . l:selected)
-  silent put=l:contents
-  keepjumps 0d
-  setlocal nomodifiable
+  if empty(l:selected) == 0
+    " open buffer
+    execute "new " . l:selected
+    setlocal buftype=nofile readonly modifiable
+    setlocal bufhidden=wipe
+    let l:contents = system('ri ' . l:selected)
+    silent put=l:contents
+    keepjumps 0d
+    setlocal nomodifiable
+  endif
 endfunction
 
 nmap <silent> <leader>lg :GPickFile<cr>
