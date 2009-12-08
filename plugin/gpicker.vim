@@ -76,7 +76,7 @@ command GPickRiDoc :call <SID>GPickRiDoc()
 function! s:GPickRiDoc()
 
   " get selection via gpicker
-  let l:selected  = system('ruby riwrap.rb | gpicker --name-separator \\n -')
+  let l:selected  = system('ruby ' . $HOME . '/.vim/bin/riwrap.rb | gpicker --name-separator \\n -')
 
   if empty(l:selected) == 0
     " open buffer
