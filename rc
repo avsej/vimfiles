@@ -125,7 +125,7 @@ vnoremap > >gv
 "set dictionary=/usr/share/dict/words
 set number
 
-set grepprg=grep\ -nH\ $*
+set grepprg=grep\ -nHR\ $*
 
 "if has("autocmd") && exists("+omnifunc")
 augroup cynapses autocmd!
