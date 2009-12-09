@@ -57,6 +57,21 @@ function! s:GPickFile()
   endif
 endfunction
 
+command GPickJump :call <SID>GPickJump()
+function! s:GPickJump()
+  " grab list of jumps
+  redir => l:ls_output
+  silent execute 'ls'
+  redir END
+
+  " remove empty line from beginning and trailing line info
+  let l:items = strpart(substitute(l:ls_output, '\(\d\+\)\s\+\([u%#ah=+x-]\+\)\s\+"\(.\{-}\)"\s\{-}line\s\+\d\+', '\3   \2 \1', 'g'), 1)
+  " get selection via gpicker
+  let l:selected  = system('gpicker --name-separator \\n -', items)
+  " open buffer
+  execute "buffer " . substitute(l:selected, '\d\+\s\+[u%#ah=+x-]\+$', '', '')
+endfunction
+
 command GPickBuffer :call <SID>GPickBuffer()
 function! s:GPickBuffer()
   " grab list of buffers
@@ -74,16 +89,15 @@ endfunction
 
 command GPickRiDoc :call <SID>GPickRiDoc()
 function! s:GPickRiDoc()
-
   " get selection via gpicker
-  let l:selected  = system('ruby ' . $HOME . '/.vim/bin/riwrap.rb | gpicker --name-separator \\n -')
+  let l:selected  = system('fasteri | gpicker --name-separator \\n -')
 
   if empty(l:selected) == 0
     " open buffer
-    execute "new " . l:selected
+    execute "new [ri]"
     setlocal buftype=nofile readonly modifiable
     setlocal bufhidden=wipe
-    let l:contents = system('ri ' . l:selected)
+    let l:contents = system(printf("fasteri '%s'", l:selected))
     silent put=l:contents
     keepjumps 0d
     setlocal nomodifiable
