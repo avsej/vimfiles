@@ -84,13 +84,14 @@ function! s:GPickBuffer()
   " get selection via gpicker
   let l:selected  = system('gpicker --name-separator \\n -', items)
   " open buffer
-  execute "buffer " . substitute(l:selected, '\d\+\s\+[u%#ah=+x-]\+$', '', '')
+  execute "buffer " . substitute(l:selected, '[u%#ah=+x-]\s\+\+\d\+$', '', '')
 endfunction
 
 command GPickRiDoc :call <SID>GPickRiDoc()
 function! s:GPickRiDoc()
+  let l:cursor = expand("<cword>")
   " get selection via gpicker
-  let l:selected  = system('fasteri | gpicker --name-separator \\n -')
+  let l:selected  = system('fasteri | gpicker --init-filter="'. l:cursor .'" --name-separator \\n -')
 
   if empty(l:selected) == 0
     " open buffer

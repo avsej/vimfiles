@@ -159,6 +159,7 @@ augroup cynapses autocmd!
 augroup end
 
 
+nmap <leader>b :!bash<cr>
 nmap <silent> <f3> :silent nohlsearch<cr>
 imap <silent> <f3> <c-o>:silent nohlsearch<cr>
 set pastetoggle=<f12>
