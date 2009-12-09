@@ -84,7 +84,7 @@ function! s:GPickBuffer()
   " get selection via gpicker
   let l:selected  = system('gpicker --name-separator \\n -', items)
   " open buffer
-  execute "buffer " . substitute(l:selected, '[u%#ah=+x-]\s\+\+\d\+$', '', '')
+  execute "buffer " . substitute(l:selected, '[u%#ah=+x-]\+\s\+\d\+$', '', '')
 endfunction
 
 command GPickRiDoc :call <SID>GPickRiDoc()
