@@ -1,6 +1,5 @@
 "=============================================================================
-" vim:ft=vim:ts=4:sw=4:noet:fdm=marker:commentstring=\"\ %s:ff=unix
-" 	     File: texrc.vim
+"        File: texrc.vim
 "      Author: Srinath Avadhanula
 "     Created: Mon Apr 01 11:00 AM 2002 PST
 "         CVS: $Id: texrc 1073 2009-10-02 21:12:54Z tmaas $
@@ -749,3 +748,4 @@ TexLet g:Tex_InternalTagsDefinitions = 1
 
 " }}}
 " ============================================================================== 
+" vim:ft=vim:ts=4:sw=4:noet:fdm=marker:commentstring=\"\ %s:ff=unix

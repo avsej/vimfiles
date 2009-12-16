@@ -1,7 +1,7 @@
 " LaTeX filetype
 "	  Language: LaTeX (ft=tex)
 "	Maintainer: Srinath Avadhanula
-"		 Email: srinath@fastmail.fm
+"	 Email: srinath@fastmail.fm
 
 if exists('did_latexSuite_disabled')
   finish
@@ -15,3 +15,6 @@ if !exists('s:initLatexSuite')
 endif
 
 silent! do LatexSuite User LatexSuiteFileType
+set expandtab
+set tabstop=2
+set shiftwidth=2

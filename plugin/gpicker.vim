@@ -80,11 +80,11 @@ function! s:GPickBuffer()
   redir END
 
   " remove empty line from beginning and trailing line info
-  let l:items = strpart(substitute(l:ls_output, '\(\d\+\)\s\+\([u%#ah=+x-]\+\)\s\+"\(.\{-}\)"\s\{-}line\s\+\d\+', '\3   \2 \1', 'g'), 1)
+  let l:items = strpart(substitute(l:ls_output, '\(\d\+\)\s\+\([u%#ah=+ x-]\+\)\s\+"\(.\{-}\)"\s\{-}line\s\+\d\+', '\3   \2 \1', 'g'), 1)
   " get selection via gpicker
   let l:selected  = system('gpicker --name-separator \\n -', items)
   " open buffer
-  execute "buffer " . substitute(l:selected, '[u%#ah=+x-]\+\s\+\d\+$', '', '')
+  execute "buffer " . substitute(l:selected, '[u%#ah= +x-]\+\s\+\d\+$', '', '')
 endfunction
 
 command GPickRiDoc :call <SID>GPickRiDoc()
