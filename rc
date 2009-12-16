@@ -237,6 +237,7 @@ au bufreadpost *.doc silent %!antiword "%"
 au bufreadpost *.odt silent %!odt2txt "%"
 
 let g:lustyjugglershowkeys = 'a'
+let g:LustyExplorerSuppressRubyWarning = 1
 nmap <silent> <Leader>lg :Gpicker<cr>
 "nmap <silent> <Leader>f :FilesystemExplorer<cr>
 "nmap <silent> <Leader>r :FilesystemExplorerFromHere<cr>
