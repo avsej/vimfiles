@@ -792,7 +792,7 @@ function s:GetFileTypeSettings(ft)
     elseif fileType == 'latte'
 	let b:ECcommentOpen = '\\;'
 	let b:ECcommentClose = ''
-    elseif fileType =~ '^\(tex\|abc\|erlang\|ist\|lprolog\|matlab\|mf\|'.
+    elseif fileType =~ '^\(tex\|abc\|erlang\|ist\|lprolog\|octave\|matlab\|mf\|'.
 		\ 'postscr\|ppd\|prolog\|simula\|slang\|slrnrc\|slrnsc\|'.
 		\ 'texmf\|viki\|virata\)$'
 	let b:ECcommentOpen = '%'
