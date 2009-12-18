@@ -57,7 +57,6 @@ set statusline+=%{&encoding}                 " encoding
 set statusline+=%{((exists(\"+bomb\")\ &&\ &bomb)?\"b,\":\"\")}, " bom
 set statusline+=%{&fileformat},              " file format
 set statusline+=%{GitBranch()}]
-set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%= " right align
 set statusline+=0x%-8b\                      " current char
 set statusline+=%-14.(%l,%c%)\ %<%p        " offset
