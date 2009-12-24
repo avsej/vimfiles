@@ -34,42 +34,29 @@
 "               You can also use the command:
 "
 "                 ":GPickFile"
+"                 ":GPickFileFromHere"
 "                 ":GPickBuffer"
 "
 
 " Exit quickly when already loaded.
-if exists("g:loaded_gpicker")
+if exists("g:loaded_gpicker") || executable("gpicker") == 0
   finish
 endif
 
-" ruby-to-vim function calls
-function! s:GetRiClassNames()
-  ruby get_ri_class_names
-endfunction
-
-command GPickFile :call <SID>GPickFile()
-function! s:GPickFile()
+command GPickFile :call <SID>GPickFile(".")
+command GPickFileFromHere :call <SID>GPickFile(expand("%:h"))
+function! s:GPickFile(path)
+  if empty(a:path)
+    let l:path = "."
+  else
+    let l:path = a:path
+  endif
   " select file via gpicker
-  let l:filename = system('gpicker -t guess .')
+  let l:filename = l:path . "/" . system('gpicker -t guess ' . l:path)
   if filereadable(l:filename)
     " open selected file
     execute "edit " . l:filename
   endif
-endfunction
-
-command GPickJump :call <SID>GPickJump()
-function! s:GPickJump()
-  " grab list of jumps
-  redir => l:ls_output
-  silent execute 'ls'
-  redir END
-
-  " remove empty line from beginning and trailing line info
-  let l:items = strpart(substitute(l:ls_output, '\(\d\+\)\s\+\([u%#ah=+x-]\+\)\s\+"\(.\{-}\)"\s\{-}line\s\+\d\+', '\3   \2 \1', 'g'), 1)
-  " get selection via gpicker
-  let l:selected  = system('gpicker --name-separator \\n -', items)
-  " open buffer
-  execute "buffer " . substitute(l:selected, '\d\+\s\+[u%#ah=+x-]\+$', '', '')
 endfunction
 
 command GPickBuffer :call <SID>GPickBuffer()
@@ -80,11 +67,11 @@ function! s:GPickBuffer()
   redir END
 
   " remove empty line from beginning and trailing line info
-  let l:items = strpart(substitute(l:ls_output, '\(\d\+\)\s\+\([u%#ah=+ x-]\+\)\s\+"\(.\{-}\)"\s\{-}line\s\+\d\+', '\3   \2 \1', 'g'), 1)
+  let l:items = strpart(substitute(l:ls_output, '\(\d\+\)\s\+\([u%#ah=+x-]\+\)\s\+"\(.\{-}\)"\s\{-}line\s\+\d\+', '\3   \2 \1', 'g'), 1)
   " get selection via gpicker
   let l:selected  = system('gpicker --name-separator \\n -', items)
   " open buffer
-  execute "buffer " . substitute(l:selected, '[u%#ah= +x-]\+\s\+\d\+$', '', '')
+  execute "buffer " . substitute(l:selected, '[u%#ah=+x-]\+\s\+\d\+$', '', '')
 endfunction
 
 command GPickRiDoc :call <SID>GPickRiDoc()
@@ -106,5 +93,8 @@ function! s:GPickRiDoc()
 endfunction
 
 nmap <silent> <leader>lg :GPickFile<cr>
+nmap <silent> <leader>lr :GPickFileFromHere<cr>
 nmap <silent> <leader>m :GPickBuffer<cr>
 nmap <silent> <leader>k :GPickRiDoc<cr>
+
+let g:loaded_gpicker = 1
