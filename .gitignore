@@ -2,3 +2,4 @@
 .viminfo
 *.tmp
 tmp
+doc/tags
