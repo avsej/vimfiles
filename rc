@@ -85,7 +85,7 @@ set lazyredraw
 "set comments=b:#,:%,fb:-,n:>,n:)
 set comments=sr:/*,mb:\ *,el:*/,://,b:#,:%,:xcomm,n:>,n:),fb:-
 "set formatoptions=cqrt
-set formatoptions=tcawrqn
+set formatoptions=cawrqn
 set joinspaces
 set whichwrap+=<,>,[,]
 set linebreak

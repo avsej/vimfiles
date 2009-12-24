@@ -18,3 +18,4 @@ silent! do LatexSuite User LatexSuiteFileType
 set expandtab
 set tabstop=2
 set shiftwidth=2
+set formatoptions+=t
