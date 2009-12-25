@@ -261,6 +261,9 @@ autocmd BufReadPost *
   \   exe "normal! g`\"" |
   \ endif
 
+" Write with sudo :w!!
+cmap w!! %!sudo tee > /dev/null %
+
 source ~/.vim/etc/abbrev.vim
 
 " vim:ft=vim:sw=2:sts=2:et:
