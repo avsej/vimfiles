@@ -15,6 +15,4 @@ setlocal omnifunc=csscomplete#CompleteCSS
 
 let &l:include = '^\s*@import\s\+\%(url(\)\='
 
-"set laststatus=2
-set number
 " vim:set sw=2:
