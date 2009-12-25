@@ -237,8 +237,19 @@ au bufreadpost *.odt silent %!odt2txt "%"
 
 set langmap=йq,цw,уe,кr,еt,нy,гu,шi,щo,зp,х[,ъ],фa,ыs,вd,аf,пg,рh,оj,лk,дl,ж\\;,э',яz,чx,сc,мv,иb,тn,ьm,б\\,,ю.,ё`,ЙQ,ЦW,УE,КR,ЕT,НY,ГU,ШI,ЩO,ЗP,Х{,Ъ},ФA,ЫS,ВD,АF,ПG,РH,ОJ,ЛK,ДL,Ж:,Э\\",ЯZ,ЧX,СC,МV,ИB,ТN,ЬM,Б<,Ю>,Ё~
 
+" jQuery syntax
+au BufRead,BufNewFile *.js set ft=javascript
+" Less CSS
+au BufNewFile,BufRead *.less set filetype=less
+" Capfile
+au BufNewFile,BufRead [Cc]ap(file)?   set filetype=ruby
+" JSON
+au BufNewFile,BufRead *.json          set filetype=json
+" RDF, XML
+au BufNewFile,BufRead *.(rdf|xml)     set filetype=xml
+
 au BufNewFile,BufRead *.prawn	set ft=ruby
-au BufNewFile,BufRead *.cap	set ft=ruby
+
 autocmd! BufNewFile * silent! 0r ~/.vim/skel/tmpl.%:e
 
 " From vimrc_example.vim distributed with Vim 7.
