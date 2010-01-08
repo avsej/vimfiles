@@ -49,17 +49,17 @@ endif
 "set laststatus=0 " but show status for ruby, c etc.
 set laststatus=2
 set statusline=
-set statusline+=%-3.3n\                      " buffer number
-set statusline+=%f\                          " file name
-set statusline+=%h%m%r%w                     " flags
-set statusline+=\[%{strlen(&ft)?&ft:'none'}, " filetype
-set statusline+=%{&encoding}                 " encoding
-set statusline+=%{((exists(\"+bomb\")\ &&\ &bomb)?\"b,\":\"\")}, " bom
-set statusline+=%{&fileformat},              " file format
-set statusline+=%{GitBranch()}]
-set statusline+=%= " right align
-set statusline+=0x%-8b\                      " current char
-set statusline+=%-14.(%l,%c%)\ %<%p        " offset
+set statusline+=%n\                           " buffer number
+set statusline+=%f\                           " file name
+set statusline+=%=                            " right align
+set statusline+=%h%m%r%w                      " flags
+set statusline+=%{strlen(&ft)?&ft:'none'}\    " filetype
+set statusline+=%{&encoding}\                 " encoding
+set statusline+=%{((exists(\"+bomb\")\ &&\ &bomb)?\"b,\":\"\")}  " bom
+set statusline+=%{&fileformat}\               " file format
+set statusline+=%{GitBranch()}\               " git branch
+"set statusline+=0x%b\                         " current char
+set statusline+=%.(%l,%c%)\ %<%p              " offset
 
 " Слова откуда будем завершать
 set complete=""
@@ -191,7 +191,7 @@ let g:minibufexplwinfixheight = 1
 let g:sh_indent_case_labels=1
 
 highlight specialkey ctermfg=red guifg=red
-set list listchars=tab:>\ ,trail:·
+set list listchars=tab:\ \ ,trail:·
 " settings for explorer.vim
 let g:explhidefiles='^\.'
 " settings for netrw
