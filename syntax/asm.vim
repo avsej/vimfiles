@@ -758,7 +758,7 @@ syn keyword gasOpcode_PENT_MMX		pmvgezb pmvgezbb pmvgezbw pmvgezbl pmvgezbq
 syn keyword gasOpcode_PENT_MMX		pmvlzb pmvlzbb pmvlzbw pmvlzbl pmvlzbq
 syn keyword gasOpcode_PENT_MMX		pmvnzb pmvnzbb pmvnzbw pmvnzbl pmvnzbq
 syn keyword gasOpcode_PENT_MMX		pmvzb pmvzbb pmvzbw pmvzbl pmvzbq
-syn keyword gasOpcode_386_Base		pop
+syn keyword gasOpcode_X64_Base		pop popb popw popl popq
 syn keyword gasOpcode_186_Base		popa
 syn keyword gasOpcode_386_Base		popad
 syn keyword gasOpcode_186_Base		popaw
