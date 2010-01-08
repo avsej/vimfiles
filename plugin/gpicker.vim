@@ -43,16 +43,17 @@ if exists("g:loaded_gpicker") || executable("gpicker") == 0
   finish
 endif
 
-command GPickFile :call <SID>GPickFile(".")
-command GPickFileFromHere :call <SID>GPickFile(expand("%:h"))
-function! s:GPickFile(path)
+command GPickFile :call <SID>GPickFile(".", "guess")
+command GPickFileDefault :call <SID>GPickFile(".", "default")
+command GPickFileFromHere :call <SID>GPickFile(expand("%:h"), "guess")
+function! s:GPickFile(path, type)
   if empty(a:path)
     let l:path = "."
   else
     let l:path = a:path
   endif
   " select file via gpicker
-  let l:filename = l:path . "/" . system('gpicker -t guess ' . l:path)
+  let l:filename = l:path . "/" . system('gpicker -t ' . a:type . " " . l:path)
   if filereadable(l:filename)
     " open selected file
     execute "edit " . l:filename
@@ -93,6 +94,7 @@ function! s:GPickRiDoc()
 endfunction
 
 nmap <silent> <leader>lg :GPickFile<cr>
+nmap <silent> <leader>lf :GPickFileDefault<cr>
 nmap <silent> <leader>lr :GPickFileFromHere<cr>
 nmap <silent> <leader>m :GPickBuffer<cr>
 nmap <silent> <leader>k :GPickRiDoc<cr>
