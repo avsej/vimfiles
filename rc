@@ -169,6 +169,7 @@ let c_space_errors = 1
 let omnicpp_namespacesearch = 2
 "let omnicpp_selectfirstitem = 2
 "let g:autotagctagscmd = "ctags --c++-kinds=+p --fields=+ias --extra=+q"
+nmap ,t :!(cd %:p:h;ctags *.[ch])&
 
 " timestamps for special files
 let g:use_timestamp = 1
@@ -263,6 +264,8 @@ autocmd BufReadPost *
 
 " Write with sudo :w!!
 cmap w!! %!sudo tee > /dev/null %
+
+nmap <silent> <leader>k :cw<cr>
 
 source ~/.vim/etc/abbrev.vim
 

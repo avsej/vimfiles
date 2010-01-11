@@ -97,6 +97,6 @@ nmap <silent> <leader>lg :GPickFile<cr>
 nmap <silent> <leader>lf :GPickFileDefault<cr>
 nmap <silent> <leader>lr :GPickFileFromHere<cr>
 nmap <silent> <leader>m :GPickBuffer<cr>
-nmap <silent> <leader>k :GPickRiDoc<cr>
+nmap <silent> <leader>r :GPickRiDoc<cr>
 
 let g:loaded_gpicker = 1
