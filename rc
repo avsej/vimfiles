@@ -232,6 +232,8 @@ if has('cscope') && filereadable("/usr/bin/cscope")
   " 8 or i: find files #including this file
 endif
 
+let g:tex_indent_items = 1
+
 au bufreadpost *.pdf silent %!pdftotext -nopgbrk "%" - |fmt -csw78
 au bufreadpost *.doc silent %!antiword "%"
 au bufreadpost *.odt silent %!odt2txt "%"
