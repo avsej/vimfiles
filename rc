@@ -179,7 +179,7 @@ let g:git_diff_spawn_mode = 1
 
 " manpage view
 let g:manpageview_winopen = "hsplit="
-let g:manpageview_multimanpage = 0
+let g:manpageview_multimanpage = 1
 
 " vim specific options
 let g:vimsyntax_noerror=1
@@ -187,6 +187,8 @@ let g:vimsyntax_noerror=1
 " settings minibufexpl.vim
 let g:minibufexplmodseltarget = 1
 let g:minibufexplwinfixheight = 1
+
+let g:clj_highlight_builtins=1
 
 " bash case indet level
 let g:sh_indent_case_labels=1

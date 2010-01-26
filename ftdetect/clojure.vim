@@ -1,3 +1,1 @@
-augroup clojure
-	au! BufRead,BufNewFile *.clj   setfiletype clojure
-augroup END
+au BufNewFile,BufRead *.clj setfiletype clojure
