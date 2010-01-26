@@ -19,7 +19,7 @@ set autoindent
 set history=128
 set guifont=DejaVu\ Sans\ Mono\ 8
 set printencoding=utf8
-set printoptions=paper:a4,wrap:y,syntax:n
+set printoptions=paper:a4,wrap:y,syntax:n,formfeed:y
 set gcr=a:blinkwait0,a:block-cursor
 if has("gui_running")
   "set lines=40 columns=130
@@ -58,7 +58,7 @@ set statusline+=%{&encoding}\                 " encoding
 set statusline+=%{((exists(\"+bomb\")\ &&\ &bomb)?\"b,\":\"\")}  " bom
 set statusline+=%{&fileformat}\               " file format
 set statusline+=%{GitBranch()}\               " git branch
-"set statusline+=0x%b\                         " current char
+set statusline+=0x%b\                         " current char
 set statusline+=%.(%l,%c%)\ %<%p              " offset
 
 " Слова откуда будем завершать
@@ -254,6 +254,8 @@ au BufNewFile,BufRead *.(rdf|xml)     set filetype=xml
 au BufNewFile,BufRead *.prawn	set ft=ruby
 
 autocmd! BufNewFile * silent! 0r ~/.vim/skel/tmpl.%:e
+  " For all text files set 'textwidth' to 78 characters.
+  autocmd FileType text setlocal textwidth=78
 
 " From vimrc_example.vim distributed with Vim 7.
 " When editing a file, always jump to the last known cursor position.
