@@ -68,11 +68,12 @@ set complete+=.
 " Из словаря
 "set complete+=k
 " Из других открытых буферов
-"set complete+=b
+set complete+=b
 " из тегов
 set complete+=t
-set completeopt+=preview
-set completeopt+=longest
+set completeopt=menu
+"set completeopt+=preview
+"set completeopt+=longest
 highlight Pmenu ctermbg=238 gui=bold
 
 set noerrorbells
@@ -85,7 +86,14 @@ set lazyredraw
 "set comments=b:#,:%,fb:-,n:>,n:)
 set comments=sr:/*,mb:\ *,el:*/,://,b:#,:%,:xcomm,n:>,n:),fb:-
 "set formatoptions=cqrt
-set formatoptions=cawrqn
+set formatoptions=""
+set formatoptions+=c
+"set formatoptions+=a
+set formatoptions+=w
+set formatoptions+=r
+set formatoptions+=q
+set formatoptions+=n
+set cpoptions=$
 set joinspaces
 set whichwrap+=<,>,[,]
 set linebreak
