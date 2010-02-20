@@ -85,6 +85,7 @@ set lazyredraw
 
 "set comments=b:#,:%,fb:-,n:>,n:)
 set comments=sr:/*,mb:\ *,el:*/,://,b:#,:%,:xcomm,n:>,n:),fb:-
+set textwidth=74
 "set formatoptions=cqrt
 set formatoptions=""
 set formatoptions+=c
@@ -244,7 +245,7 @@ endif
 
 let g:tex_indent_items = 1
 
-au bufreadpost *.pdf silent %!pdftotext -nopgbrk "%" - |fmt -csw78
+au bufreadpost *.pdf silent %!pdftotext -nopgbrk "%" - |fmt -csw74
 au bufreadpost *.doc silent %!antiword "%"
 au bufreadpost *.odt silent %!odt2txt "%"
 
@@ -264,8 +265,8 @@ au BufNewFile,BufRead *.(rdf|xml)     set filetype=xml
 au BufNewFile,BufRead *.prawn	set ft=ruby
 
 autocmd! BufNewFile * silent! 0r ~/.vim/skel/tmpl.%:e
-  " For all text files set 'textwidth' to 78 characters.
-  autocmd FileType text setlocal textwidth=78
+  " For all text files set 'textwidth' to 74 characters.
+  autocmd FileType text setlocal textwidth=74
 
 " From vimrc_example.vim distributed with Vim 7.
 " When editing a file, always jump to the last known cursor position.
