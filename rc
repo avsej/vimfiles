@@ -255,8 +255,8 @@ set langmap=йq,цw,уe,кr,еt,нy,гu,шi,щo,зp,х[,ъ],фa,ыs,вd,аf,пg,
 au BufRead,BufNewFile *.js set ft=javascript
 " Less CSS
 au BufNewFile,BufRead *.less set filetype=less
-" Capfile
-au BufNewFile,BufRead [Cc]ap(file)?   set filetype=ruby
+" fbml
+au BufNewFile,BufRead *.fbml.erb set filetype=eruby
 " JSON
 au BufNewFile,BufRead *.json          set filetype=json
 " RDF, XML
