@@ -772,7 +772,7 @@ function s:GetFileTypeSettings(ft)
 	let b:ECcommentOpen = ';'
 	let b:ECcommentClose = ''
     elseif fileType =~ '^\(python\|perl\|[^w]*sh$\|tcl\|jproperties\|make\|'.
-		\ 'robots\|apache\|apachestyle\|awk\|bc\|cfg\|cl\|conf\|'.
+		\ 'robots\|apache\|apachestyle\|awk\|bc\|cfg\|cl\|conf\|debsources\|'.
 		\ 'crontab\|diff\|ecd\|elmfilt\|eterm\|expect\|exports\|'.
 		\ 'fgl\|fvwm\|gdb\|gnuplot\|gtkrc\|hb\|hog\|ia64\|icon\|'.
 		\ 'inittab\|lftp\|lilo\|lout\|lss\|lynx\|maple\|mush\|'.
