@@ -264,6 +264,8 @@ au BufNewFile,BufRead *.(rdf|xml)     set filetype=xml
 
 au BufNewFile,BufRead *.prawn	set ft=ruby
 
+au BufRead,BufNewFile /opt/nginx/conf/* set ft=nginx
+
 autocmd! BufNewFile * silent! 0r ~/.vim/skel/tmpl.%:e
   " For all text files set 'textwidth' to 72 characters.
   autocmd FileType text setlocal textwidth=72
