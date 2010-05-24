@@ -59,7 +59,7 @@ set statusline+=%{((exists(\"+bomb\")\ &&\ &bomb)?\"b,\":\"\")}  " bom
 set statusline+=%{&fileformat}\               " file format
 set statusline+=%{GitBranch()}\               " git branch
 set statusline+=0x%b\                         " current char
-set statusline+=%.(%l,%c%)\ %<%p              " offset
+set statusline+=%.(%l,%v%)\ %<%p              " offset
 
 " Слова откуда будем завершать
 set complete=""
