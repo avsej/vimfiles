@@ -1,5 +1,6 @@
+*.tmp
 .netrwhist
 .viminfo
-*.tmp
-tmp
 doc/tags
+tmp
+undo/*
