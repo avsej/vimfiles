@@ -73,7 +73,8 @@ set complete+=.
 set complete+=b
 " из тегов
 set complete+=t
-set completeopt=menu
+set completeopt=""
+"set completeopt=menu
 "set completeopt+=preview
 "set completeopt+=longest
 highlight Pmenu ctermbg=238 gui=bold
