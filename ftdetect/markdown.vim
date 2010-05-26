@@ -4,6 +4,6 @@ augroup markdown
 augroup END
 
 augroup mkd
-	autocmd BufRead *.mkd  set ai formatoptions=tcroqn2 comments=n:>
-	autocmd BufRead *.text  set ai formatoptions=tcroqn2 comments=n:>
+	autocmd BufRead *.mkd  set ai formatoptions=tcroqn2 comments=n:> wrap
+	autocmd BufRead *.text  set ai formatoptions=tcroqn2 comments=n:> wrap
 augroup END
