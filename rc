@@ -140,7 +140,7 @@ set grepprg=grep\ -nHR\ $*
 
 "if has("autocmd") && exists("+omnifunc")
 augroup cynapses autocmd!
-	autocmd cursorhold * nohls | redraw
+"        autocmd cursorhold * nohls | redraw
 	autocmd bufenter * syntax sync fromstart
 	autocmd filetype help nmap <buffer> <return> <c-]>
 	autocmd filetype python set omnifunc=pythoncomplete#Complete
@@ -172,10 +172,8 @@ augroup end
 
 nmap <leader>b :!bash<cr>
 nmap <silent> <f3> :silent nohlsearch<cr>
-imap <silent> <f3> <c-o>:silent nohlsearch<cr>
 set pastetoggle=<f12>
 noremap <leader>i i<space><esc>r
-noremap <leader>dbl :g/^$/d<cr>:nohls<cr> runtime! macros/matchit.vim
 let c_space_errors = 1
 "let c_no_tab_space_error = 1
 let omnicpp_namespacesearch = 2
@@ -195,12 +193,6 @@ let g:manpageview_multimanpage = 1
 
 " vim specific options
 let g:vimsyntax_noerror=1
-
-" settings minibufexpl.vim
-let g:minibufexplmodseltarget = 1
-let g:minibufexplwinfixheight = 1
-
-let g:clj_highlight_builtins=1
 
 " bash case indet level
 let g:sh_indent_case_labels=1
