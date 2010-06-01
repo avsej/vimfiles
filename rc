@@ -140,7 +140,7 @@ set grepprg=grep\ -nHR\ $*
 
 "if has("autocmd") && exists("+omnifunc")
 augroup cynapses autocmd!
-"        autocmd cursorhold * nohls | redraw
+        autocmd cursorhold * nohls | redraw
 	autocmd bufenter * syntax sync fromstart
 	autocmd filetype help nmap <buffer> <return> <c-]>
 	autocmd filetype python set omnifunc=pythoncomplete#Complete
@@ -206,37 +206,8 @@ let g:netrw_list_hide='^\.,\~$'
 " settings for :tohtml
 let html_number_lines=1
 let html_use_css=1
+let html_font="'DejaVu Sans Mono'"
 " let use_xhtml=1
-
-" cscope settings
-if has('cscope') && filereadable("/usr/bin/cscope")
-  set csto=0
-  set cscopetag
-  set nocsverb
-  if filereadable("cscope.out")
-    cs add cscope.out
-  endif
-  set csverb
-
-  let x = "sgctefd"
-  while x != ""
-    let y = strpart(x, 0, 1) | let x = strpart(x, 1)
-      exec "nmap <c-j>" . y . " :cscope find " . y .
-            \ " <c-r>=expand(\"\<cword\>\")<cr><cr>"
-      exec "nmap <c-j><c-j>" . y . " :scscope find " . y .
-            \ " <c-r>=expand(\"\<cword\>\")<cr><cr>"
-  endwhile
-  nmap <c-j>i      :cscope find i ^<c-r>=expand("<cword>")<cr><cr>
-  nmap <c-j><c-j>i :scscope find i ^<c-r>=expand("<cword>")<cr><cr>
-  " 0 or s: find this c symbol
-  " 1 or g: find this definition
-  " 2 or d: find functions called by this function
-  " 3 or c: find functions calling this function
-  " 4 or t: find this text string
-  " 6 or e: find this egrep pattern
-  " 7 or f: find this file
-  " 8 or i: find files #including this file
-endif
 
 let g:tex_indent_items = 1
 
