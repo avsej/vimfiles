@@ -116,7 +116,6 @@ if has('gui')
 	set guioptions-=l
 	set guioptions-=l
 	set guioptions-=r
-	set guioptions-=r
 end
 
 set wildmode=list:longest
@@ -139,7 +138,7 @@ set number
 set grepprg=grep\ -nHR\ $*
 
 "if has("autocmd") && exists("+omnifunc")
-augroup cynapses autocmd!
+augroup completers autocmd!
         autocmd cursorhold * nohls | redraw
 	autocmd bufenter * syntax sync fromstart
 	autocmd filetype help nmap <buffer> <return> <c-]>
@@ -163,10 +162,6 @@ augroup cynapses autocmd!
 	if ($term =~ "screen")
 		autocmd vimleave * :set term=screen
 	endif
-	try
-"                autocmd quickfixcmdpost * :cwindow 10
-	catch
-	endtry
 augroup end
 
 
@@ -186,10 +181,6 @@ let g:use_timestamp = 1
 
 " git
 let g:git_diff_spawn_mode = 1
-
-" manpage view
-let g:manpageview_winopen = "hsplit="
-let g:manpageview_multimanpage = 1
 
 " vim specific options
 let g:vimsyntax_noerror=1
