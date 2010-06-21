@@ -159,7 +159,7 @@ augroup completers autocmd!
 augroup end
 
 
-nmap <leader>b :!bash<cr>
+nmap <leader>b :shell<cr>
 nmap <silent> <f3> :silent nohlsearch<cr>
 set pastetoggle=<f12>
 noremap <leader>i i<space><esc>r
@@ -263,7 +263,7 @@ augroup encrypted
  autocmd BufWritePost,FileWritePost *.gpg u
 augroup END
 
-highlight TooLongLine term=reverse ctermfg=White ctermbg=Red
-match TooLongLine /.\%>101v/
+"highlight TooLongLine term=reverse ctermfg=White ctermbg=Red
+"match TooLongLine /.\%>101v/
 
 " vim:ft=vim:sw=2:sts=2:et:
