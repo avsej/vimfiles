@@ -11,7 +11,7 @@ endif
 set undodir=~/.vim/undo
 set undofile
 set encoding=utf8
-set fileencodings=utf-8,windows-1251,iso-8859-15,koi8-r
+set fileencodings=utf-8,cp1251,cp866,koi8-r,iso-8859-15
 set spelllang=ru,en
 set nocompatible
 "set fileformat=unix
@@ -63,15 +63,9 @@ set statusline+=%{GitBranch()}\               " git branch
 set statusline+=0x%b\                         " current char
 set statusline+=%.(%l,%v%)\ %<%p              " offset
 
-" Слова откуда будем завершать
 set complete=""
-" Из текущего буфера
 set complete+=.
-" Из словаря
-"set complete+=k
-" Из других открытых буферов
 set complete+=b
-" из тегов
 set complete+=t
 set completeopt=""
 "set completeopt=menu
@@ -268,5 +262,8 @@ augroup encrypted
  " after the file has been written.
  autocmd BufWritePost,FileWritePost *.gpg u
 augroup END
+
+highlight TooLongLine term=reverse ctermfg=White ctermbg=Red
+match TooLongLine /.\%>101v/
 
 " vim:ft=vim:sw=2:sts=2:et:
