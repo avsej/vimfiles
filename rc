@@ -1,20 +1,15 @@
 if (($term == "rxvt-unicode") || ($term =~ "xterm") || ($term =~ "screen")) && (&termencoding == "")
-    set termencoding=utf-8
+  set termencoding=utf-8
 endif
-" TODO: research
-"if has("vms")
-"  set nobackup
-"else
-"  set backup
-"endif
 
+set cursorline
 set undodir=~/.vim/undo
 set undofile
 set encoding=utf8
 set fileencodings=utf-8,cp1251,cp866,koi8-r,iso-8859-15
 set spelllang=ru,en
 set nocompatible
-"set fileformat=unix
+set fileformat=unix
 set viminfo=<1000,s100,'1000,f1,:1000,/1000,n~/.vim/.viminfo
 set autowrite
 set autoindent
@@ -41,17 +36,11 @@ set splitbelow
 set scrolloff=3
 set sidescrolloff=2
 set sessionoptions=curdir,buffers
-set mouse=a
-if (v:version == 603 && has("patch045")) || (v:version > 603)
-	set modeline
-	set modelines=1
-else
-	set nomodeline
-endif
-"set laststatus=0 " but show status for ruby, c etc.
+"set mouse=a
+set modeline
+set modelines=5
 set laststatus=2
 set statusline=
-set statusline+=%n\                           " buffer number
 set statusline+=%f\                           " file name
 set statusline+=%=                            " right align
 set statusline+=%h%m%r%w                      " flags
@@ -104,12 +93,12 @@ set shiftround
 "set infercase
 syntax enable
 if has('gui')
-	set guioptions-=m
-	set guioptions-=t
-	set guioptions-=T
-	set guioptions-=l
-	set guioptions-=l
-	set guioptions-=r
+  set guioptions-=m
+  set guioptions-=t
+  set guioptions-=T
+  set guioptions-=l
+  set guioptions-=l
+  set guioptions-=r
 end
 
 set wildmode=list:longest
@@ -133,31 +122,30 @@ set grepprg=grep\ -nHR\ $*
 
 "if has("autocmd") && exists("+omnifunc")
 augroup completers autocmd!
-        autocmd cursorhold * nohls | redraw
-	autocmd bufenter * syntax sync fromstart
-	autocmd filetype help nmap <buffer> <return> <c-]>
-	autocmd filetype python set omnifunc=pythoncomplete#Complete
-	autocmd filetype javascript set omnifunc=javascriptcomplete#CompleteJS
-	autocmd filetype html set omnifunc=htmlcomplete#CompleteTags
-	autocmd filetype css set omnifunc=csscomplete#CompleteCSS
-	autocmd filetype xml set omnifunc=xmlcomplete#CompleteTags
-	autocmd filetype php set omnifunc=phpcomplete#CompletePHP
-	autocmd filetype sql set omnifunc=sqlcomplete#Complete
-	autocmd Filetype *
-		\ if &omnifunc == "" |
-		\ 	setlocal omnifunc=syntaxcomplete#Complete |
-		\ endif
+  autocmd cursorhold * nohls | redraw
+  autocmd bufenter * syntax sync fromstart
+  autocmd filetype help nmap <buffer> <return> <c-]>
+  autocmd filetype python set omnifunc=pythoncomplete#Complete
+  autocmd filetype javascript set omnifunc=javascriptcomplete#CompleteJS
+  autocmd filetype html set omnifunc=htmlcomplete#CompleteTags
+  autocmd filetype css set omnifunc=csscomplete#CompleteCSS
+  autocmd filetype xml set omnifunc=xmlcomplete#CompleteTags
+  autocmd filetype php set omnifunc=phpcomplete#CompletePHP
+  autocmd filetype sql set omnifunc=sqlcomplete#Complete
+  autocmd Filetype *
+        \ if &omnifunc == "" |
+        \ 	setlocal omnifunc=syntaxcomplete#Complete |
+        \ endif
 
-	autocmd bufnewfile,bufread /*/*bash*completion*/*
-		\ if expand("<amatch>") !~# "changelog" |
-		\ 	let b:is_bash = 1 | set filetype=sh |
-		\ endif
+  autocmd bufnewfile,bufread /*/*bash*completion*/*
+        \ if expand("<amatch>") !~# "changelog" |
+        \ 	let b:is_bash = 1 | set filetype=sh |
+        \ endif
 
-	if ($term =~ "screen")
-		autocmd vimleave * :set term=screen
-	endif
+  if ($term =~ "screen")
+    autocmd vimleave * :set term=screen
+  endif
 augroup end
-
 
 nmap <leader>b :shell<cr>
 nmap <silent> <f3> :silent nohlsearch<cr>
@@ -168,7 +156,7 @@ let c_space_errors = 1
 let omnicpp_namespacesearch = 2
 "let omnicpp_selectfirstitem = 2
 "let g:autotagctagscmd = "ctags --c++-kinds=+p --fields=+ias --extra=+q"
-nmap ,t :!(cd %:p:h;ctags *.[ch])&
+"nmap ,t :!(cd %:p:h;ctags *.[ch])&
 
 " timestamps for special files
 let g:use_timestamp = 1
@@ -218,17 +206,17 @@ au BufNewFile,BufRead *.prawn	set ft=ruby
 au BufRead,BufNewFile /opt/nginx/conf/* set ft=nginx
 
 autocmd! BufNewFile * silent! 0r ~/.vim/skel/tmpl.%:e
-  " For all text files set 'textwidth' to 72 characters.
-  autocmd FileType text setlocal textwidth=72
+" For all text files set 'textwidth' to 72 characters.
+autocmd FileType text setlocal textwidth=72
 
 " From vimrc_example.vim distributed with Vim 7.
 " When editing a file, always jump to the last known cursor position.
 " Don't do it when the position is invalid or when inside an event handler
 " (happens when dropping a file on gvim).
 autocmd BufReadPost *
-  \ if line("'\"") > 1 && line("'\"") <= line("$") |
-  \   exe "normal! g`\"" |
-  \ endif
+      \ if line("'\"") > 1 && line("'\"") <= line("$") |
+      \   exe "normal! g`\"" |
+      \ endif
 
 " Write with sudo :w!!
 cmap w!! %!sudo tee > /dev/null %
