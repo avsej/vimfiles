@@ -37,7 +37,7 @@ set sidescrolloff=2
 set sessionoptions=curdir,buffers
 set modeline
 set modelines=5
-"set ruler
+set ruler
 "set laststatus=2
 "set statusline=
 "set statusline+=%f\                           " file name
@@ -72,14 +72,7 @@ set lazyredraw
 "set comments=b:#,:%,fb:-,n:>,n:)
 set comments=sr:/*,mb:\ *,el:*/,://,b:#,:%,:xcomm,n:>,n:),fb:-
 set textwidth=72
-"set formatoptions=cqrt
-set formatoptions=""
-set formatoptions+=c
-"set formatoptions+=a
-set formatoptions+=w
-set formatoptions+=r
-set formatoptions+=q
-set formatoptions+=n
+set formatoptions=awrqn
 set cpoptions=$
 set joinspaces
 set whichwrap+=<,>,[,]
@@ -159,28 +152,24 @@ let html_font="'DejaVu Sans Mono'"
 
 let g:tex_indent_items = 1
 
-au bufreadpost *.pdf silent %!pdftotext -nopgbrk "%" - |fmt -csw72
-au bufreadpost *.doc silent %!antiword "%"
-au bufreadpost *.odt silent %!odt2txt "%"
+autocmd bufreadpost *.pdf silent %!pdftotext -nopgbrk "%" - |fmt -csw72
+autocmd bufreadpost *.doc silent %!antiword "%"
+autocmd bufreadpost *.odt silent %!odt2txt "%"
 
 set langmap=йq,цw,уe,кr,еt,нy,гu,шi,щo,зp,х[,ъ],фa,ыs,вd,аf,пg,рh,оj,лk,дl,ж\\;,э',яz,чx,сc,мv,иb,тn,ьm,б\\,,ю.,ё`,ЙQ,ЦW,УE,КR,ЕT,НY,ГU,ШI,ЩO,ЗP,Х{,Ъ},ФA,ЫS,ВD,АF,ПG,РH,ОJ,ЛK,ДL,Ж:,Э\\",ЯZ,ЧX,СC,МV,ИB,ТN,ЬM,Б<,Ю>,Ё~
 
 " Less CSS
-au BufNewFile,BufRead *.less set filetype=less
+autocmd BufNewFile,BufRead *.less set filetype=less
 " fbml
-au BufNewFile,BufRead *.fbml.erb set filetype=eruby
+autocmd BufNewFile,BufRead *.fbml.erb set filetype=eruby
 " JSON
-au BufNewFile,BufRead *.json set filetype=json
+autocmd BufNewFile,BufRead *.json set filetype=json
 " RDF, XML
-au BufNewFile,BufRead *.(rdf|xml) set filetype=xml
+autocmd BufNewFile,BufRead *.(rdf|xml) set filetype=xml
 " Prawn
-au BufNewFile,BufRead *.prawn set ft=ruby
+autocmd BufNewFile,BufRead *.prawn set ft=ruby
 
-au BufRead,BufNewFile /opt/nginx/conf/* set ft=nginx
-
-autocmd! BufNewFile * silent! 0r ~/.vim/skel/tmpl.%:e
-" For all text files set 'textwidth' to 72 characters.
-autocmd FileType text setlocal textwidth=72
+autocmd BufNewFile,BufRead /opt/nginx/conf/* set ft=nginx
 
 " From vimrc_example.vim distributed with Vim 7.
 " When editing a file, always jump to the last known cursor position.
@@ -192,6 +181,7 @@ autocmd BufReadPost *
       \ endif
 
 source ~/.vim/etc/abbrev.vim
+autocmd BufNewFile * silent! 0r ~/.vim/skel/tmpl.%:e
 
 " Transparent editing of gpg encrypted files.
 " By Wouter Hanegraaff
