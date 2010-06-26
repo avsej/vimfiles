@@ -75,28 +75,9 @@ function! s:GPickBuffer()
   execute "buffer " . substitute(l:selected, '[u%#ah=+x-]\+\s\+\d\+$', '', '')
 endfunction
 
-command GPickRiDoc :call <SID>GPickRiDoc()
-function! s:GPickRiDoc()
-  let l:cursor = expand("<cword>")
-  " get selection via gpicker
-  let l:selected  = system('fasteri | gpicker --init-filter="'. l:cursor .'" --name-separator \\n -')
-
-  if empty(l:selected) == 0
-    " open buffer
-    execute "new [ri]"
-    setlocal buftype=nofile readonly modifiable
-    setlocal bufhidden=wipe
-    let l:contents = system(printf("fasteri '%s'", l:selected))
-    silent put=l:contents
-    keepjumps 0d
-    setlocal nomodifiable
-  endif
-endfunction
-
 nmap <silent> <leader>lg :GPickFile<cr>
 nmap <silent> <leader>lf :GPickFileDefault<cr>
 nmap <silent> <leader>lr :GPickFileFromHere<cr>
 nmap <silent> <leader>m :GPickBuffer<cr>
-nmap <silent> <leader>r :GPickRiDoc<cr>
 
 let g:loaded_gpicker = 1

@@ -1,6 +1,6 @@
 *.tmp
 .netrwhist
 .viminfo
-doc/tags
-tmp
-undo/*
+/doc/tags
+/swap/*
+/undo/*
