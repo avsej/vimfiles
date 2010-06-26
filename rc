@@ -2,7 +2,7 @@ if (($term == "rxvt-unicode") || ($term =~ "xterm") || ($term =~ "screen")) && (
   set termencoding=utf-8
 endif
 
-set cursorline
+"set cursorline
 set undodir=~/.vim/undo
 set undofile
 set encoding=utf8
@@ -26,9 +26,7 @@ endif
 let mapleader = ","
 set directory=~/.vim/tmp
 set backspace=indent,eol,start
-set ruler
 set title
-set shortmess=ati
 set showcmd
 set showfulltag
 set showmode
@@ -39,18 +37,20 @@ set sessionoptions=curdir,buffers
 "set mouse=a
 set modeline
 set modelines=5
-set laststatus=2
-set statusline=
-set statusline+=%f\                           " file name
-set statusline+=%=                            " right align
-set statusline+=%h%m%r%w                      " flags
-set statusline+=%{strlen(&ft)?&ft:'none'}\    " filetype
-set statusline+=%{&encoding}\                 " encoding
-set statusline+=%{((exists(\"+bomb\")\ &&\ &bomb)?\"b,\":\"\")}  " bom
-set statusline+=%{&fileformat}\               " file format
-set statusline+=%{GitBranch()}\               " git branch
-set statusline+=0x%b\                         " current char
-set statusline+=%.(%l,%v%)\ %<%p              " offset
+"set ruler
+"set laststatus=2
+"set statusline=
+"set statusline+=%f\                           " file name
+"set statusline+=%=                            " right align
+"set statusline+=%h%m%r%w                      " flags
+"set statusline+=%{strlen(&ft)?&ft:'none'}\    " filetype
+"set statusline+=%{&encoding}\                 " encoding
+"set statusline+=%{((exists(\"+bomb\")\ &&\ &bomb)?\"b,\":\"\")}  " bom
+"set statusline+=%{&fileformat}\               " file format
+"set statusline+=%{GitBranch()}\               " git branch
+"set statusline+=0x%b\                         " current char
+"set statusline+=%.(%l,%v%)\ %<%p              " offset
+set shortmess=atT
 
 set complete=""
 set complete+=.
