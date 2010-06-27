@@ -51,6 +51,7 @@ set ruler
 "set statusline+=0x%b\                         " current char
 "set statusline+=%.(%l,%v%)\ %<%p              " offset
 set shortmess=atT
+set rulerformat=%30(%=%y\ %c,%l\ %P%)
 
 set complete=""
 set complete+=.
