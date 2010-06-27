@@ -182,7 +182,7 @@ autocmd BufReadPost *
       \ endif
 
 source ~/.vim/etc/abbrev.vim
-autocmd BufNewFile * silent! 0r ~/.vim/skel/tmpl.%:e
+autocmd BufNewFile * silent! 0r ~/.vim/skel/template.%:e
 
 " Transparent editing of gpg encrypted files.
 " By Wouter Hanegraaff
