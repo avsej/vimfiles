@@ -10,9 +10,12 @@ if has("gui_running")
   set guioptions-=mtTlr
 endif
 
+if v:version >= 703
+  set undodir=~/.vim/undo
+  set undofile
+endif
+
 "set cursorline
-set undodir=~/.vim/undo
-set undofile
 set encoding=utf8
 set fileencodings=utf-8,cp1251,cp866,koi8-r,iso-8859-15
 set spelllang=ru,en
