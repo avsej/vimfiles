@@ -122,8 +122,19 @@ nnoremap Y y$
 vnoremap < <gv
 vnoremap > >gv
 
-nmap <leader>b :shell<cr>
-nmap <silent> <f3> :silent nohlsearch<cr>
+" map arrow keys in normal mode to produce nothing
+nnoremap <left> <nop>
+nnoremap <right> <nop>
+nnoremap <up> <nop>
+nnoremap <down> <nop>
+" map arrow keys in insert mode to go to normal mode
+inoremap <left> <esc>
+inoremap <right> <esc>
+inoremap <up> <esc>
+inoremap <down> <esc>
+
+nnoremap <leader>b :shell<cr>
+nnoremap <silent> <f3> :silent nohlsearch<cr>
 set pastetoggle=<f12>
 let c_space_errors = 1
 "let c_no_tab_space_error = 1
