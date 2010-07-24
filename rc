@@ -119,6 +119,20 @@ augroup avsej autocmd!
   endif
 augroup end
 
+augroup filetypedetect autocmd!
+  autocmd BufNewFile,BufRead *.less set ft=less
+  autocmd BufNewFile,BufRead *.fbml.erb set ft=eruby
+  autocmd BufNewFile,BufRead *.json set ft=json
+  autocmd BufNewFile,BufRead *.(rdf|xml) set ft=xml
+  autocmd BufNewFile,BufRead *.prawn set ft=ruby
+  autocmd BufNewFile,BufRead *.ru set ft=rack
+  autocmd BufNewFile,BufRead /opt/nginx/conf/* set ft=nginx
+  autocmd BufNewFile,BufRead *.as68 set ft=asm68k
+  autocmd BufNewFile,BufRead *.feature,*.story set ft=cucumber
+  autocmd BufNewFile,BufRead *.m set ft=octave
+  autocmd BufNewFile,BufRead *muttatorrc*,*.muttator set ft=muttator
+augroup end
+
 nnoremap Y y$
 vnoremap < <gv
 vnoremap > >gv
@@ -185,18 +199,6 @@ autocmd bufreadpost *.odt silent %!odt2txt "%"
 
 set langmap=йq,цw,уe,кr,еt,нy,гu,шi,щo,зp,х[,ъ],фa,ыs,вd,аf,пg,рh,оj,лk,дl,ж\\;,э',яz,чx,сc,мv,иb,тn,ьm,б\\,,ю.,ё`,ЙQ,ЦW,УE,КR,ЕT,НY,ГU,ШI,ЩO,ЗP,Х{,Ъ},ФA,ЫS,ВD,АF,ПG,РH,ОJ,ЛK,ДL,Ж:,Э\\",ЯZ,ЧX,СC,МV,ИB,ТN,ЬM,Б<,Ю>,Ё~
 
-" Less CSS
-autocmd BufNewFile,BufRead *.less set filetype=less
-" fbml
-autocmd BufNewFile,BufRead *.fbml.erb set filetype=eruby
-" JSON
-autocmd BufNewFile,BufRead *.json set filetype=json
-" RDF, XML
-autocmd BufNewFile,BufRead *.(rdf|xml) set filetype=xml
-" Prawn
-autocmd BufNewFile,BufRead *.prawn set ft=ruby
-
-autocmd BufNewFile,BufRead /opt/nginx/conf/* set ft=nginx
 
 " From vimrc_example.vim distributed with Vim 7.
 " When editing a file, always jump to the last known cursor position.
