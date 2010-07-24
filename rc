@@ -104,10 +104,11 @@ set number
 
 set grepprg=grep\ -nHR\ $*
 
-augroup completers autocmd!
+augroup avsej autocmd!
+  autocmd filetype help setlocal conceallevel=0
+  autocmd filetype html,xhtml setlocal ts=2 sw=2 et fo-=a
   autocmd cursorhold * nohls | redraw
   autocmd bufenter * syntax sync fromstart
-  autocmd filetype help setlocal conceallevel=0
   autocmd filetype *
         \ if &omnifunc == "" |
         \       setlocal omnifunc=syntaxcomplete#Complete |
