@@ -122,11 +122,22 @@ nnoremap Y y$
 vnoremap < <gv
 vnoremap > >gv
 
-" map arrow keys in normal mode to produce nothing
+" map arrow keys in normal/visual/command mode to produce nothing
 nnoremap <left> <nop>
 nnoremap <right> <nop>
 nnoremap <up> <nop>
 nnoremap <down> <nop>
+
+vnoremap <left> <nop>
+vnoremap <right> <nop>
+vnoremap <up> <nop>
+vnoremap <down> <nop>
+
+cnoremap <left> <nop>
+cnoremap <right> <nop>
+cnoremap <up> <nop>
+cnoremap <down> <nop>
+
 " map arrow keys in insert mode to go to normal mode
 inoremap <left> <esc>
 inoremap <right> <esc>
