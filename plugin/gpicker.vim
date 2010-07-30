@@ -27,9 +27,9 @@
 "
 "        Usage: To launch the gpicker:
 "
-"                 <Leader>lg - Opens the gpicker from current directory.
-"                 <Leader>m  - Opens the gpicker to chose from list of current
-"                 buffers.
+"                 <Leader>mg - Opens the gpicker from current directory.
+"                 <Leader>mb - Opens the gpicker to chose from list of 
+"                 current buffers.
 "
 "               You can also use the command:
 "
@@ -75,9 +75,9 @@ function! s:GPickBuffer()
   execute "buffer " . substitute(l:selected, '[u%#ah=+x-]\+\s\+\d\+$', '', '')
 endfunction
 
-nmap <silent> <leader>lg :GPickFile<cr>
-nmap <silent> <leader>lf :GPickFileDefault<cr>
-nmap <silent> <leader>lr :GPickFileFromHere<cr>
-nmap <silent> <leader>m :GPickBuffer<cr>
+nmap <silent> <leader>mg :GPickFile<cr>
+nmap <silent> <leader>mf :GPickFileDefault<cr>
+nmap <silent> <leader>mr :GPickFileFromHere<cr>
+nmap <silent> <leader>mb :GPickBuffer<cr>
 
 let g:loaded_gpicker = 1
