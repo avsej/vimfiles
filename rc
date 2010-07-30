@@ -69,7 +69,7 @@ highlight Pmenu ctermbg=238 gui=bold
 set noerrorbells
 set hlsearch
 set incsearch
-set showmatch
+set noshowmatch
 "set matchtime=1
 set lazyredraw
 
@@ -137,7 +137,7 @@ nnoremap Y y$
 vnoremap < <gv
 vnoremap > >gv
 
-" map arrow keys in normal/visual/command mode to produce nothing
+" map arrow keys in normal/visual to produce nothing
 nnoremap <left> <nop>
 nnoremap <right> <nop>
 nnoremap <up> <nop>
@@ -147,11 +147,6 @@ vnoremap <left> <nop>
 vnoremap <right> <nop>
 vnoremap <up> <nop>
 vnoremap <down> <nop>
-
-cnoremap <left> <nop>
-cnoremap <right> <nop>
-cnoremap <up> <nop>
-cnoremap <down> <nop>
 
 " map arrow keys in insert mode to go to normal mode
 inoremap <left> <esc>
@@ -199,11 +194,6 @@ autocmd bufreadpost *.odt silent %!odt2txt "%"
 
 set langmap=йq,цw,уe,кr,еt,нy,гu,шi,щo,зp,х[,ъ],фa,ыs,вd,аf,пg,рh,оj,лk,дl,ж\\;,э',яz,чx,сc,мv,иb,тn,ьm,б\\,,ю.,ё`,ЙQ,ЦW,УE,КR,ЕT,НY,ГU,ШI,ЩO,ЗP,Х{,Ъ},ФA,ЫS,ВD,АF,ПG,РH,ОJ,ЛK,ДL,Ж:,Э\\",ЯZ,ЧX,СC,МV,ИB,ТN,ЬM,Б<,Ю>,Ё~
 
-
-" From vimrc_example.vim distributed with Vim 7.
-" When editing a file, always jump to the last known cursor position.
-" Don't do it when the position is invalid or when inside an event handler
-" (happens when dropping a file on gvim).
 autocmd BufReadPost *
       \ if line("'\"") > 1 && line("'\"") <= line("$") |
       \   exe "normal! g`\"" |
