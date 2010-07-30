@@ -187,7 +187,7 @@ let html_use_css=1
 let html_font="'DejaVu Sans Mono'"
 
 let g:tex_indent_items = 1
-
+let g:LustyExplorerSuppressRubyWarning = 1
 autocmd bufreadpost *.pdf silent %!pdftotext -nopgbrk "%" - |fmt -csw72
 autocmd bufreadpost *.doc silent %!antiword "%"
 autocmd bufreadpost *.odt silent %!odt2txt "%"
