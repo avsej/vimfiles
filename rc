@@ -33,7 +33,6 @@ set backspace=indent,eol,start
 set title
 set showcmd
 set showfulltag
-set showmode
 set splitbelow
 set scrolloff=0
 set sidescrolloff=0
