@@ -16,8 +16,8 @@ if v:version >= 703
 endif
 
 "set cursorline
+set fileencodings=utf-8,koi8-r,cp1251,cp866,iso-8859-15
 set encoding=utf8
-set fileencodings=utf-8,cp1251,cp866,koi8-r,iso-8859-15
 set spelllang=ru,en
 set nocompatible
 set fileformat=unix
@@ -91,7 +91,7 @@ syntax enable
 
 set wildmode=list:longest
 set wildmenu
-set wildignore=*.o,*.obj,*~
+set wildignore=*.o,*.obj,*~,.svn,CVS,.git,.hg,*.a
 
 " enable filetype settings
 filetype on
