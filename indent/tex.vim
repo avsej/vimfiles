@@ -62,7 +62,9 @@ setlocal nolisp
 setlocal nosmartindent
 setlocal autoindent
 setlocal indentkeys+=},=\\item,=\\bibitem
-
+setlocal shiftwidth=2
+setlocal tabstop=2
+setlocal expandtab
 
 " Only define the function once
 if exists("*GetTeXIndent") | finish
