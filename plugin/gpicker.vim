@@ -17,8 +17,8 @@
 "  Maintainers: Sergey Avseyev <sergey.avseyev@gmail.com>
 " Contributors:
 "
-" Release Date: December 7, 2009
-"      Version: 0.2
+" Release Date: August 17, 2010
+"      Version: 0.3
 "     Keywords: autocompletion
 "
 "      Install: Copy file into ~/.vim/plugin directory or put in .vimrc
@@ -27,6 +27,7 @@
 "
 "        Usage: To launch the gpicker:
 "
+"                 <Leader>mr - Opens the gpicker from directory of file.
 "                 <Leader>mg - Opens the gpicker from current directory.
 "                 <Leader>mb - Opens the gpicker to chose from list of 
 "                 current buffers.
@@ -53,10 +54,10 @@ function! s:GPickFile(path, type)
     let l:path = a:path
   endif
   " select file via gpicker
-  let l:filename = l:path . "/" . system('gpicker -t ' . a:type . " " . l:path)
+  let l:filename = l:path . "/" . system('gpicker -t ' . a:type . " " . shellescape(l:path))
   if filereadable(l:filename)
     " open selected file
-    execute "edit " . l:filename
+    execute "edit " . escape(l:filename, ' ')
   endif
 endfunction
 
