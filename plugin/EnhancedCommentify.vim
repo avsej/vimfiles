@@ -439,7 +439,7 @@ function EnhancedCommentifyInitBuffer()
     endif
 endfunction
 
-autocmd BufWinEnter,BufNewFile  *	call EnhancedCommentifyInitBuffer()
+autocmd BufWinEnter,BufNewFile,BufReadPost  *	call EnhancedCommentifyInitBuffer()
 
 "
 " EnhancedCommentify(emptyLines, action, ...)
@@ -777,7 +777,7 @@ function s:GetFileTypeSettings(ft)
 		\ 'fgl\|fvwm\|gdb\|gnuplot\|gtkrc\|hb\|hog\|ia64\|icon\|'.
 		\ 'inittab\|lftp\|lilo\|lout\|lss\|lynx\|maple\|mush\|'.
 		\ 'muttrc\|nsis\|ora\|pcap\|pine\|po\|procmail\|'.
-		\ 'psf\|ptcap\|r\|radiance\|ratpoison\|readline\remind\|'.
+		\ 'psf\|ptcap\|r\|rack\|radiance\|ratpoison\|readline\remind\|'.
 		\ 'ruby\|screen\|sed\|sm\|snnsnet\|snnspat\|snnsres\|spec\|'.
 		\ 'squid\|terminfo\|tidy\|tli\|tsscl\|vgrindefs\|vrml\|'.
 		\ 'wget\|wml\|xf86conf\|xmath\)$'
