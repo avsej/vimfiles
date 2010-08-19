@@ -75,6 +75,7 @@ set lazyredraw
 "set comments=b:#,:%,fb:-,n:>,n:)
 set comments=sr:/*,mb:\ *,el:*/,://,b:#,:%,:xcomm,n:>,n:),fb:-
 set textwidth=72
+set colorcolumn=72
 set formatoptions=awrqn
 set cpoptions=$
 set joinspaces
@@ -161,9 +162,8 @@ let g:vimsyntax_noerror=1
 let g:sh_indent_case_labels=1
 
 highlight specialkey ctermfg=red guifg=red
+highlight colorcolumn ctermbg=gray guibg=gray
 set list listchars=tab:\ \ ,trail:·
-" settings for explorer.vim
-let g:explhidefiles='^\.'
 " settings for netrw
 let g:netrw_list_hide='^\.,\~$'
 " settings for :tohtml
