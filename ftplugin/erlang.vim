@@ -2,13 +2,12 @@
 " Language:   Erlang
 " Maintainer: Oscar Hellström <oscar@oscarh.net>
 " URL:        http://personal.oscarh.net
-" Version:    2006-06-23
+" Version:    2010-08-09
 " ------------------------------------------------------------------------------
 " Usage: {{{1
 "
-" To enable folding put
+" To enable folding put in your vimrc
 " let g:erlangFold=1
-" in your vimrc
 "
 " Folding will make only one fold for a complete function, even though it has
 " more than one function head and body
@@ -37,8 +36,9 @@ let s:doneFunctionDefinitions=1
 " Local settings {{{1
 " Run Erlang make instead of GNU Make
 function s:SetErlangOptions()
-	compiler erlang
-	setlocal omnifunc=erlangcomplete#Complete
+	if version >= 700
+		setlocal omnifunc=erlangcomplete#Complete
+	endif
 
 	" {{{2 Settings for folding
 	if (exists("g:erlangFold")) && g:erlangFold
@@ -48,6 +48,7 @@ function s:SetErlangOptions()
 		"setlocal fml=2
 	endif
 endfunction
+
 
 " Define folding functions {{{1
 if !exists("*GetErlangFold")
@@ -123,7 +124,7 @@ if !exists("*GetErlangFold")
 		if line=~ s:ErlangBeginHead
 			while line !~ s:ErlangEndHead
 				if 0 == lnum " EOF / BOF
-					retun '='
+					return '='
 				endif
 				if line =~ s:ErlangFunEnd
 					return '='
@@ -188,6 +189,11 @@ if !exists("*GetErlangFold")
 endif " }}}
 
 call s:SetErlangOptions()
-set listchars=tab:\ \ 
+
+" Skeletons {{{1
+function GenServer()
+	echo foo 
+endfunction
+" }}}
 
 " vim: set foldmethod=marker:
