@@ -55,14 +55,16 @@ set ruler
 set shortmess=atT
 set rulerformat=%30(%=%y\ %c,%l\ %P%)
 
-set complete=""
-set complete+=.
-set complete+=b
-set complete+=t
+" complete from:
+"   the current buffer
+"   buffers in other windows
+"   other loaded buffers
+"   unloaded buffers
+"   included files
+set complete=".,w,b,u,i"
+" hide complete menu to keep it simple
 set completeopt=""
-"set completeopt=menu
-"set completeopt+=preview
-"set completeopt+=longest
+" reset background on complete menu
 highlight Pmenu ctermbg=238 gui=bold
 
 set noerrorbells
@@ -75,8 +77,8 @@ set lazyredraw
 "set comments=b:#,:%,fb:-,n:>,n:)
 set comments=sr:/*,mb:\ *,el:*/,://,b:#,:%,:xcomm,n:>,n:),fb:-
 set textwidth=72
-set colorcolumn=72
-set formatoptions=awrqn
+"set colorcolumn=73
+set formatoptions=wrqn
 set cpoptions=$
 set joinspaces
 set whichwrap+=<,>,[,]
@@ -105,8 +107,10 @@ set number
 set grepprg=grep\ -nHR\ $*
 
 augroup avsej autocmd!
+  autocmd filetype markdown setlocal textwidth=100 fo+=a
+  autocmd filetype asciidoc setlocal fo+=a
   autocmd filetype help setlocal conceallevel=0
-  autocmd filetype html,xhtml setlocal ts=2 sw=2 et fo-=a
+  autocmd filetype html,xhtml setlocal ts=2 sw=2 et
   autocmd cursorhold * nohls | redraw
   autocmd bufenter * syntax sync fromstart
   autocmd filetype *
