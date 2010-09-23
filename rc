@@ -2,222 +2,78 @@ if (($term == "rxvt-unicode") || ($term =~ "xterm") || ($term =~ "screen")) && (
   set termencoding=utf-8
 endif
 
-if has("gui_running")
-  set guicursor=a:blinkwait0,a:block-cursor
-  set guifont=DejaVu\ Sans\ Mono\ 8
-  set background=light
-  colorscheme default
-  set guioptions-=mtTlr
-endif
+inoreabbrev didnt didn't
+inoreabbrev doesnt doesn't
+inoreabbrev dont don't
+inoreabbrev fro for
+inoreabbrev Im I'm
+inoreabbrev shoudl should
+inoreabbrev teh the
+inoreabbrev yuo you
 
-if v:version >= 703
-  set undodir=~/.vim/undo
-  set undofile
-endif
-
-"set cursorline
-set fileencodings=utf-8,koi8-r,cp1251,cp866,iso-8859-15
-set encoding=utf8
-set spelllang=ru,en
-set nocompatible
-set fileformat=unix
-set viminfo=<1000,s100,'1000,f1,:1000,/1000,n~/.vim/.viminfo
-set autowrite
-set autoindent
-set history=128
-set printencoding=utf8
-set printoptions=paper:a4,wrap:y,syntax:n,formfeed:y
-let mapleader = ","
-set directory=~/.vim/swap
-set backspace=indent,eol,start
-set title
-set showcmd
-set showfulltag
-set splitbelow
-set scrolloff=0
-set sidescrolloff=0
-set sessionoptions=curdir,buffers
-set modeline
-set modelines=5
-set ruler
-"set laststatus=2
-"set statusline=
-"set statusline+=%f\                           " file name
-"set statusline+=%=                            " right align
-"set statusline+=%h%m%r%w                      " flags
-"set statusline+=%{strlen(&ft)?&ft:'none'}\    " filetype
-"set statusline+=%{&encoding}\                 " encoding
-"set statusline+=%{((exists(\"+bomb\")\ &&\ &bomb)?\"b,\":\"\")}  " bom
-"set statusline+=%{&fileformat}\               " file format
-"set statusline+=%{GitBranch()}\               " git branch
-"set statusline+=0x%b\                         " current char
-"set statusline+=%.(%l,%v%)\ %<%p              " offset
-set shortmess=atT
-set rulerformat=%30(%=%y\ %c,%l\ %P%)
-
-" complete from:
-"   the current buffer
-"   buffers in other windows
-"   other loaded buffers
-"   unloaded buffers
-"   included files
-set complete=".,w,b,u,i"
-" hide complete menu to keep it simple
-set completeopt=""
-" reset background on complete menu
-highlight Pmenu ctermbg=238 gui=bold
-
-set noerrorbells
-set hlsearch
-set incsearch
-set noshowmatch
-"set matchtime=1
-set lazyredraw
-
-"set comments=b:#,:%,fb:-,n:>,n:)
-set comments=sr:/*,mb:\ *,el:*/,://,b:#,:%,:xcomm,n:>,n:),fb:-
-set textwidth=72
-"set colorcolumn=73
-set formatoptions=wrqn
-set cpoptions=$
-set joinspaces
-set whichwrap+=<,>,[,]
-set linebreak
-set nowrap
-set hidden
-set winminheight=1
-set shiftround
-"set ignorecase
-"set smartcase
-"set infercase
-syntax enable
-
-set wildmode=list:longest
-set wildmenu
-set wildignore=*.o,*.obj,*~,.svn,CVS,.git,.hg,*.a
-
-" enable filetype settings
-filetype on
-filetype plugin on
-filetype indent on
-
-"set dictionary=/usr/share/dict/words
-set number
-
-set grepprg=grep\ -nHR\ $*
-
-augroup avsej autocmd!
-  autocmd filetype markdown setlocal textwidth=100 fo+=a
-  autocmd filetype asciidoc setlocal fo+=a
-  autocmd filetype help setlocal conceallevel=0
-  autocmd filetype html,xhtml setlocal ts=2 sw=2 et
-  autocmd cursorhold * nohls | redraw
-  autocmd bufenter * syntax sync fromstart
-  autocmd filetype *
-        \ if &omnifunc == "" |
-        \       setlocal omnifunc=syntaxcomplete#Complete |
-        \ endif
-
-  if ($term =~ "screen")
-    autocmd vimleave * :set term=screen
-  endif
-augroup end
-
-nnoremap Y y$
+vnoremap <down> <nop>
 vnoremap < <gv
 vnoremap > >gv
-
-" map arrow keys in normal/visual to produce nothing
-nnoremap <left> <nop>
-nnoremap <right> <nop>
-nnoremap <up> <nop>
-nnoremap <down> <nop>
-
 vnoremap <left> <nop>
 vnoremap <right> <nop>
 vnoremap <up> <nop>
-vnoremap <down> <nop>
-
-" map arrow keys in insert mode to go to normal mode
+inoremap <down> <esc>
 inoremap <left> <esc>
 inoremap <right> <esc>
 inoremap <up> <esc>
-inoremap <down> <esc>
+nnoremap <down> <nop>
+nnoremap <left> <nop>
+nnoremap <right> <nop>
+nnoremap <up> <nop>
+nnoremap Y y$
 
-nnoremap <leader>b :shell<cr>
-nnoremap <silent> <f3> :silent nohlsearch<cr>
-set pastetoggle=<f12>
-let c_space_errors = 1
-"let c_no_tab_space_error = 1
-let omnicpp_namespacesearch = 2
-"let omnicpp_selectfirstitem = 2
-"let g:autotagctagscmd = "ctags --c++-kinds=+p --fields=+ias --extra=+q"
+let mapleader=","
 
-" timestamps for special files
-let g:use_timestamp = 1
-
-" git
-let g:git_diff_spawn_mode = 1
-
-" vim specific options
-let g:vimsyntax_noerror=1
-
-" bash case indet level
-let g:sh_indent_case_labels=1
-
-highlight specialkey ctermfg=red guifg=red
-highlight colorcolumn ctermbg=gray guibg=gray
-set list listchars=tab:\ \ ,trail:·
-" settings for netrw
-let g:netrw_list_hide='^\.,\~$'
-" settings for :tohtml
-let html_number_lines=1
-let html_use_css=1
-let html_font="'DejaVu Sans Mono'"
-
-let g:tex_indent_items = 1
-let g:LustyExplorerSuppressRubyWarning = 1
-autocmd bufreadpost *.pdf silent %!pdftotext -nopgbrk "%" - |fmt -csw72
-autocmd bufreadpost *.doc silent %!antiword "%"
-autocmd bufreadpost *.odt silent %!odt2txt "%"
-
+set autoindent
+set autowrite
+set backspace=indent,eol,start
+set comments=sr:/*,mb:\ *,el:*/,://,b:#,:%,:xcomm,n:>,n:),fb:-
+set directory=~/.vim/swap
+set encoding=utf-8
+set fileencodings=utf-8,koi8-r,cp1251,cp866,iso-8859-15
+set fileformat=unix
+set formatoptions=wrqn
+set grepprg=grep\ -nHR\ $*
+set hidden
+set history=128
+set joinspaces
 set langmap=йq,цw,уe,кr,еt,нy,гu,шi,щo,зp,х[,ъ],фa,ыs,вd,аf,пg,рh,оj,лk,дl,ж\\;,э',яz,чx,сc,мv,иb,тn,ьm,б\\,,ю.,ё`,ЙQ,ЦW,УE,КR,ЕT,НY,ГU,ШI,ЩO,ЗP,Х{,Ъ},ФA,ЫS,ВD,АF,ПG,РH,ОJ,ЛK,ДL,Ж:,Э\\",ЯZ,ЧX,СC,МV,ИB,ТN,ЬM,Б<,Ю>,Ё~
-
-autocmd BufReadPost *
-      \ if line("'\"") > 1 && line("'\"") <= line("$") |
-      \   exe "normal! g`\"" |
-      \ endif
-
-source ~/.vim/etc/abbrev.vim
-autocmd BufNewFile * silent! 0r ~/.vim/skel/template.%:e
-
-" Transparent editing of gpg encrypted files.
-" By Wouter Hanegraaff
-augroup encrypted
- au!
-
- " First make sure nothing is written to ~/.viminfo while editing
- " an encrypted file.
- autocmd BufReadPre,FileReadPre *.gpg set viminfo=
- " We don't want a swap file, as it writes unencrypted data to disk
- autocmd BufReadPre,FileReadPre *.gpg set noswapfile
- " Switch to binary mode to read the encrypted file
- autocmd BufReadPre,FileReadPre *.gpg set bin
- autocmd BufReadPre,FileReadPre *.gpg let ch_save = &ch|set ch=2
- autocmd BufReadPost,FileReadPost *.gpg '[,']!gpg --decrypt 2> /dev/null
- " Switch to normal mode for editing
- autocmd BufReadPost,FileReadPost *.gpg set nobin
- autocmd BufReadPost,FileReadPost *.gpg let &ch = ch_save|unlet ch_save
- autocmd BufReadPost,FileReadPost *.gpg execute ":doautocmd BufReadPost " . expand("%:r")
-
- " Convert all text to encrypted text before writing
- autocmd BufWritePre,FileWritePre *.gpg '[,']!gpg --default-recipient-self -ae 2>/dev/null
- " Undo the encryption so we are back in the normal text, directly
- " after the file has been written.
- autocmd BufWritePost,FileWritePost *.gpg u
-augroup END
-
-"highlight TooLongLine term=reverse ctermfg=White ctermbg=Red
-"match TooLongLine /.\%>101v/
-
-" vim:ft=vim:sw=2:sts=2:et:
+set lazyredraw
+set linebreak
+set list
+set listchars=tab:\ \ ,trail:·
+set modeline
+set nocompatible
+set noerrorbells
+set nowrap
+set pastetoggle=<f12>
+set printencoding=utf8
+set printoptions=paper:a4,wrap:y,syntax:n,formfeed:y
+set ruler
+set rulerformat=%30(%=%y\ %c,%l\ %P%)
+set scrolloff=0
+set sessionoptions=curdir,buffers
+set shiftround
+set shortmess=atT
+set showcmd
+"set showfulltag
+set sidescrolloff=0
+set splitbelow
+set textwidth=72
+set title
+set viminfo=<1000,s100,'1000,f1,:1000,/1000,n~/.vim/.viminfo
+set whichwrap+=<,>,[,]
+set wildignore=*.o,*.obj,*~,.svn,CVS,.git,.hg,*.a
+set wildmenu
+set wildmode=list:longest
+set winminheight=1
+filetype on
+filetype plugin on
+filetype indent on
+syntax enable
+set cpoptions=$
