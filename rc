@@ -1,6 +1,10 @@
 if (($term == "rxvt-unicode") || ($term =~ "xterm") || ($term =~ "screen")) && (&termencoding == "")
-  set termencoding=utf-8
+	set termencoding=utf-8
 endif
+
+if has('eval')
+	let mapleader=","
+end
 
 inoreabbrev didnt didn't
 inoreabbrev doesnt doesn't
@@ -26,8 +30,6 @@ nnoremap <left> <nop>
 nnoremap <right> <nop>
 nnoremap <up> <nop>
 nnoremap Y y$
-
-let mapleader=","
 
 set autoindent
 set autowrite
@@ -61,7 +63,6 @@ set sessionoptions=curdir,buffers
 set shiftround
 set shortmess=atT
 set showcmd
-"set showfulltag
 set sidescrolloff=0
 set splitbelow
 set textwidth=72
@@ -72,6 +73,7 @@ set wildignore=*.o,*.obj,*~,.svn,CVS,.git,.hg,*.a
 set wildmenu
 set wildmode=list:longest
 set winminheight=1
+
 filetype on
 filetype plugin on
 filetype indent on
