@@ -6,6 +6,29 @@ if has('eval')
 	let mapleader=","
 end
 
+if has("gui_running")
+	colorscheme default
+	set guicursor=a:blinkwait0,a:block-cursor
+	set guifont=DejaVu\ Sans\ Mono\ 8
+	set background=light
+	set guioptions-=mtTlr
+endif
+
+if has("extra_search")
+	set hlsearch
+	set incsearch
+end
+
+if has("persistent_undo")
+	set undodir=~/.vim/undo
+	set undofile
+endif
+
+
+set noshowmatch
+
+highlight specialkey ctermfg=red guifg=red
+
 inoreabbrev didnt didn't
 inoreabbrev doesnt doesn't
 inoreabbrev dont don't
