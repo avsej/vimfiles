@@ -2,6 +2,3 @@
 .netrwhist
 .viminfo
 /doc/tags
-/swap/*
-/undo/*
-/backup/*

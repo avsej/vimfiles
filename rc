@@ -1,34 +1,40 @@
+set nocompatible
+
 if (($term == "rxvt-unicode") || ($term =~ "xterm") || ($term =~ "screen")) && (&termencoding == "")
-	set termencoding=utf-8
+    set termencoding=utf-8
 endif
 
 if has('eval')
-	let mapleader=","
+    let mapleader=","
 end
 
 if has("gui_running")
-	colorscheme default
-	set guicursor=a:blinkwait0,a:block-cursor
-	set guifont=DejaVu\ Sans\ Mono\ 8
-	set background=light
-	set guioptions-=mtTlr
+    colorscheme default
+    set guicursor=a:blinkwait0,a:block-cursor
+    set guifont=DejaVu\ Sans\ Mono\ 8
+    set background=light
+    set guioptions-=mtTlr
 endif
 
 if has("extra_search")
-	set hlsearch
-	set incsearch
+    set hlsearch
+    set incsearch
+    set gdefault
 end
 
 if has("persistent_undo")
-	set undodir=~/.vim/undo
-	set undofile
+    set undodir=~/.vim/tmp/undo
+    set undofile
 endif
 
+" tabs/spaces
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
+set expandtab
 
-set noshowmatch
 
-highlight specialkey ctermfg=red guifg=red
-
+" abbreviations
 inoreabbrev didnt didn't
 inoreabbrev doesnt doesn't
 inoreabbrev dont don't
@@ -38,6 +44,9 @@ inoreabbrev shoudl should
 inoreabbrev teh the
 inoreabbrev yuo you
 
+" mappings
+set pastetoggle=<f12>
+set langmap=йq,цw,уe,кr,еt,нy,гu,шi,щo,зp,х[,ъ],фa,ыs,вd,аf,пg,рh,оj,лk,дl,ж\\;,э',яz,чx,сc,мv,иb,тn,ьm,б\\,,ю.,ё`,ЙQ,ЦW,УE,КR,ЕT,НY,ГU,ШI,ЩO,ЗP,Х{,Ъ},ФA,ЫS,ВD,АF,ПG,РH,ОJ,ЛK,ДL,Ж:,Э\\",ЯZ,ЧX,СC,МV,ИB,ТN,ЬM,Б<,Ю>,Ё~
 vnoremap <down> <nop>
 vnoremap < <gv
 vnoremap > >gv
@@ -48,57 +57,85 @@ inoremap <down> <esc>
 inoremap <left> <esc>
 inoremap <right> <esc>
 inoremap <up> <esc>
+inoremap kj <esc>
 nnoremap <down> <nop>
 nnoremap <left> <nop>
 nnoremap <right> <nop>
 nnoremap <up> <nop>
 nnoremap Y y$
+nnoremap <leader><space> :set nohlsearch<cr>
+nnoremap <tab> %
+vnoremap <tab> %
+nnoremap ; :
+nnoremap Q <nop>
 
+" formatting
 set autoindent
-set autowrite
+set formatoptions=wrqn
+set whichwrap+=<,>,[,]
+set nowrap
+set linebreak
+set textwidth=72
 set backspace=indent,eol,start
 set comments=sr:/*,mb:\ *,el:*/,://,b:#,:%,:xcomm,n:>,n:),fb:-
-set directory=~/.vim/swap
+
+" formats
 set encoding=utf-8
 set fileencodings=utf-8,koi8-r,cp1251,cp866,iso-8859-15
 set fileformat=unix
-set formatoptions=wrqn
+set printencoding=utf8
+
+" display
+set lazyredraw
+set list
+set listchars=tab:\ \ ,trail:·
+set ruler
+set rulerformat=%30(%=%y\ %c,%l\ %P%)
+set scrolloff=0
+set sidescrolloff=0
+set showcmd
+set shortmess=atT
+set title
+set winminheight=1
+set noerrorbells
+set splitbelow
+set cpoptions=$
+set wildignore=*.o,*.obj,*~,.svn,CVS,.git,.hg,*.a
+set wildmenu
+set wildmode=list:longest
+set noshowmatch
+highlight pmenu ctermbg=238 gui=bold
+highlight specialkey ctermfg=red guifg=red
+
+" system
+set modeline
+set cursorline
+set ttyfast
+set autowrite
+set printoptions=paper:a4,wrap:y,syntax:n,formfeed:y
+set backupdir=~/.vim/tmp/backup
+set directory=~/.vim/tmp/swap
+set backup
 set grepprg=grep\ -nHR\ $*
 set hidden
 set history=128
 set joinspaces
-set langmap=йq,цw,уe,кr,еt,нy,гu,шi,щo,зp,х[,ъ],фa,ыs,вd,аf,пg,рh,оj,лk,дl,ж\\;,э',яz,чx,сc,мv,иb,тn,ьm,б\\,,ю.,ё`,ЙQ,ЦW,УE,КR,ЕT,НY,ГU,ШI,ЩO,ЗP,Х{,Ъ},ФA,ЫS,ВD,АF,ПG,РH,ОJ,ЛK,ДL,Ж:,Э\\",ЯZ,ЧX,СC,МV,ИB,ТN,ЬM,Б<,Ю>,Ё~
-set lazyredraw
-set linebreak
-set list
-set listchars=tab:\ \ ,trail:·
-set modeline
-set nocompatible
-set noerrorbells
-set nowrap
-set pastetoggle=<f12>
-set printencoding=utf8
-set printoptions=paper:a4,wrap:y,syntax:n,formfeed:y
-set ruler
-set rulerformat=%30(%=%y\ %c,%l\ %P%)
-set scrolloff=0
 set sessionoptions=curdir,buffers
 set shiftround
-set shortmess=atT
-set showcmd
-set sidescrolloff=0
-set splitbelow
-set textwidth=72
-set title
 set viminfo=<1000,s100,'1000,f1,:1000,/1000,n~/.vim/.viminfo
-set whichwrap+=<,>,[,]
-set wildignore=*.o,*.obj,*~,.svn,CVS,.git,.hg,*.a
-set wildmenu
-set wildmode=list:longest
-set winminheight=1
 
 filetype on
 filetype plugin on
 filetype indent on
 syntax enable
-set cpoptions=$
+
+autocmd BufNewFile,BufRead *.js,*.html    set ts=4 sw=4
+autocmd BufNewFile,BufRead *.rb    set ts=2 sw=2 et
+autocmd BufNewFile,BufRead *.markdown,*.mkd    set tw=100 ts=4 sw=4 et
+autocmd BufReadPost *
+            \ if line("'\"") > 1 && line("'\"") <= line("$") |
+            \   exe "normal! g`\"" |
+            \ endif
+autocmd BufNewFile * silent! 0r ~/.vim/skel/template.%:e
+
+" vim:ft=vim:
