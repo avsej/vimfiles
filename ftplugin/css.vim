@@ -1,4 +1,3 @@
-compiler css
 setlocal dictionary=~/.vim/dict/css.dict
 setlocal iskeyword+=-
 
