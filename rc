@@ -65,7 +65,6 @@ nnoremap Y y$
 nnoremap <leader><space> :set nohlsearch<cr>
 nnoremap <tab> %
 vnoremap <tab> %
-nnoremap ; :
 nnoremap Q <nop>
 inoremap <f1> <nop>
 vnoremap <f1> <nop>
