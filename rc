@@ -33,7 +33,6 @@ set shiftwidth=4
 set softtabstop=4
 set expandtab
 
-
 " abbreviations
 inoreabbrev didnt didn't
 inoreabbrev doesnt doesn't
@@ -68,6 +67,9 @@ nnoremap <tab> %
 vnoremap <tab> %
 nnoremap ; :
 nnoremap Q <nop>
+inoremap <f1> <nop>
+vnoremap <f1> <nop>
+nnoremap <f1> <nop>
 
 " formatting
 set autoindent
