@@ -110,7 +110,6 @@ highlight specialkey ctermfg=red guifg=red
 
 " system
 set modeline
-set cursorline
 set ttyfast
 set autowrite
 set printoptions=paper:a4,wrap:y,syntax:n,formfeed:y
