@@ -46,7 +46,7 @@ endif
 
 command GPickFile :call <SID>GPickFile(".", "guess")
 command GPickFileDefault :call <SID>GPickFile(".", "default")
-command GPickFileFromHere :call <SID>GPickFile(expand("%:h"), "guess")
+command GPickFileFromHere :call <SID>GPickFile(expand("%:h"), "default")
 function! s:GPickFile(path, type)
   if empty(a:path)
     let l:path = "."
