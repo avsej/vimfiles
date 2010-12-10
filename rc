@@ -127,7 +127,7 @@ filetype plugin on
 filetype indent on
 syntax enable
 
-autocmd BufNewFile,BufRead *.ru    set ft=ruby ts=2 sw=2 et
+autocmd BufNewFile,BufRead *.ru,Rakefile,Gemfile,Capfile    set ft=ruby ts=2 sw=2 et
 autocmd BufNewFile,BufRead *.js,*.html    set ts=4 sw=4
 autocmd BufNewFile,BufRead *.rb    set ts=2 sw=2 et
 autocmd BufNewFile,BufRead *.markdown,*.mkd    set tw=100 ts=4 sw=4 et
