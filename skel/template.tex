@@ -3,23 +3,35 @@
 \usepackage{cmap}
 \usepackage[a4paper,top=2cm,bottom=2cm,left=3cm,right=1.5cm]{geometry}
 
-\usepackage[cm-default]{fontspec}
-\usepackage{xunicode,xltxtra}
+\usepackage{xunicode}
+\usepackage{xltxtra}
+\usepackage{graphicx}
+
 \defaultfontfeatures{Mapping=tex-text}
-\setromanfont{Liberation Serif}
-\setsansfont{Liberation Sans}
-\setmonofont{Liberation Mono}
+\setromanfont{DejaVu Serif}
+\setsansfont{DejaVu Sans}
+\setmonofont{DejaVu Sans Mono}
 
 \usepackage{polyglossia}
 %\setdefaultlanguage[variant=british]{english}
 \setdefaultlanguage[spelling=modern]{russian}
 
-\usepackage{graphicx,fancyvrb,longtable,indentfirst}
-\usepackage{caption,amsmath,listings}
-
-\usepackage{setspace}
-\onehalfspacing
-
+\usepackage{indentfirst}
+\usepackage[xetex]{hyperref}
+\hypersetup{
+  pdftoolbar=false,
+  pdfmenubar=false,
+  unicode=true,
+  pdflang={ru},
+  pdftitle={},
+  pdfauthor={Sergey P. Avseyev <sergey.avseyev@gmail.com>},
+  colorlinks=true,
+  citecolor=black,
+  filecolor=black,
+  linkcolor=black,
+  urlcolor=blue
+}
+\usepackage{caption}
 \usepackage{fancyhdr}
 \pagestyle{fancy}
 \fancyhead{}
@@ -27,25 +39,27 @@
 \renewcommand{\headrulewidth}{0pt}
 \renewcommand{\footrulewidth}{0pt}
 \rfoot{\arabic{page}}
-
+\usepackage{setspace}
+\onehalfspacing
+\usepackage{longtable}
+\usepackage{amsmath}
 \righthyphenmin=2
+\sloppy
+\usepackage{fancyvrb}
+\usepackage{listings}
+\lstset{language=Ruby,basicstyle=\ttfamily\footnotesize}
 
-\usepackage[unicode,xetex]{hyperref}
-\hypersetup{
-  colorlinks=true,
-  citecolor=black,
-  filecolor=black,
-  linkcolor=black,
-  urlcolor=blue,
-  pdftoolbar=false,
-  pdfmenubar=false,
-  unicode=false,
-  pdflang={ru},
-  pdfauthor={Sergey Avseyev <sergey.avseyev@gmail.com>},
-  pdftitle={Template},
-}
+\makeatletter
+  \@addtoreset{equation}{section}
+  \@addtoreset{figure}{section}
+  \@addtoreset{table}{section}
+\makeatother
 
+\renewcommand{\theequation}{\arabic{section}.\arabic{equation}}
+\renewcommand{\thefigure}{\arabic{section}.\arabic{figure}}
+\renewcommand{\thetable}{\arabic{section}.\arabic{table}}
 \begin{document}
+
 \begin{titlepage}
   \begin{center}
     {\LARGE Template}
@@ -56,6 +70,7 @@
     \today
   \end{center}
 \end{titlepage}
+\clearpage
 
 \thispagestyle{empty}
 \tableofcontents
