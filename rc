@@ -107,6 +107,7 @@ highlight pmenu ctermbg=238 gui=bold
 highlight specialkey ctermfg=red guifg=red
 
 " system
+set virtualedit=all
 set modeline
 set ttyfast
 set autowrite
