@@ -80,7 +80,7 @@ set comments=sr:/*,mb:\ *,el:*/,://,b:#,:%,:xcomm,n:>,n:),fb:-
 
 " formats
 set encoding=utf-8
-set fileencodings=utf-8,koi8-r,cp1251,cp866,iso-8859-15
+set fileencodings=utf-8,cp1251,koi8-r,cp866,iso-8859-15
 set fileformat=unix
 set printencoding=utf8
 
@@ -127,9 +127,9 @@ filetype plugin on
 filetype indent on
 syntax enable
 
-autocmd BufNewFile,BufRead *.ru,Rakefile,Gemfile,Capfile    set ft=ruby ts=2 sw=2 et
+autocmd BufNewFile,BufRead *.ru,Rakefile,Gemfile,Capfile    set ft=ruby sts=2 ts=2 sw=2 et
 autocmd BufNewFile,BufRead *.js,*.html    set ts=4 sw=4
-autocmd BufNewFile,BufRead *.rb    set ts=2 sw=2 et
+autocmd BufNewFile,BufRead *.rb    set sts=2 ts=2 sw=2 et
 autocmd BufNewFile,BufRead *.markdown,*.mkd    set tw=100 ts=4 sw=4 et
 autocmd BufReadPost *
             \ if line("'\"") > 1 && line("'\"") <= line("$") |
