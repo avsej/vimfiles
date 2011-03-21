@@ -80,7 +80,7 @@ set comments=sr:/*,mb:\ *,el:*/,://,b:#,:%,:xcomm,n:>,n:),fb:-
 
 " formats
 set encoding=utf-8
-set fileencodings=utf-8,cp1251,koi8-r,cp866,iso-8859-15
+set fileencodings=utf-8,japan,cp1251,koi8-r,cp866,iso-8859-15
 set fileformat=unix
 set printencoding=utf8
 
