@@ -153,7 +153,7 @@ autocmd FileType tex                set sts=2 ts=2 sw=2 et wrap
 autocmd FileType pod                set spell
 autocmd FileType c,cpp              set ts=2 et sts=2 sw=2
 
-   autocmd BufReadPost *
+autocmd BufReadPost *
                \ if line("'\"") > 1 && line("'\"") <= line("$") |
                \   exe "normal! g`\"" |
                \ endif
