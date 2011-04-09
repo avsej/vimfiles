@@ -10,9 +10,9 @@ end
 
 if has("gui_running")
     colorscheme default
+    set background=light
     set guicursor=a:blinkwait0,a:block-cursor
     set guifont=DejaVu\ Sans\ Mono\ 8
-    set background=light
     set guioptions-=mtTlr
 endif
 
@@ -49,6 +49,11 @@ set langmap=йq,цw,уe,кr,еt,нy,гu,шi,щo,зp,х[,ъ],фa,ыs,вd,аf,пg,
 vnoremap <down> <nop>
 vnoremap < <gv
 vnoremap > >gv
+vmap <silent> j gj
+vmap <silent> k gk
+nmap <silent> j gj
+nmap <silent> k gk
+
 vnoremap <left> <nop>
 vnoremap <right> <nop>
 vnoremap <up> <nop>
@@ -67,7 +72,12 @@ nnoremap Q <nop>
 inoremap <f1> <nop>
 vnoremap <f1> <nop>
 nnoremap <f1> <nop>
-nnoremap <c-t> :NERDTree<cr>
+nnoremap <c-t> :NERDTreeToggle<cr>
+"   inoremap () ()<left>
+"   inoremap [] []<left>
+"   inoremap '' ''<left>
+"   inoremap "" ""<left>
+
 let NERDTreeIgnore=['\.log$', '\~$', '\.out', '\.aux']
 
 " formatting
@@ -79,6 +89,7 @@ set linebreak
 set textwidth=72
 set backspace=indent,eol,start
 set comments=sr:/*,mb:\ *,el:*/,://,b:#,:%,:xcomm,n:>,n:),fb:-
+" set number
 
 " formats
 set encoding=utf-8
@@ -124,20 +135,27 @@ set joinspaces
 set sessionoptions=curdir,buffers
 set shiftround
 set viminfo=<1000,s100,'1000,f1,:1000,/1000,n~/.vim/.viminfo
+set autoread
 
 filetype on
 filetype plugin on
 filetype indent on
 syntax enable
 
+autocmd BufNewFile,BufRead *.c.rl    set ft=ragel sts=8 ts=8 sw=8 noet
 autocmd BufNewFile,BufRead *.ru,Rakefile,Gemfile,Capfile    set ft=ruby sts=2 ts=2 sw=2 et
-autocmd BufNewFile,BufRead *.js,*.html    set ts=4 sw=4
-autocmd BufNewFile,BufRead *.rb    set sts=2 ts=2 sw=2 et
-autocmd BufNewFile,BufRead *.markdown,*.mkd    set tw=100 ts=4 sw=4 et
+autocmd BufNewFile,BufRead *.html    set ts=4 sw=4
+autocmd BufNewFile,BufRead *.js,*.rb    set sts=2 ts=2 sw=2 et
+autocmd BufNewFile,BufRead *.tex    set sts=2 ts=2 sw=2 et wrap
+autocmd BufNewFile,BufRead *.markdown,*.mkd,*.md    set tw=100 ts=2 sw=2 et wrap
+
 autocmd BufReadPost *
             \ if line("'\"") > 1 && line("'\"") <= line("$") |
             \   exe "normal! g`\"" |
             \ endif
 autocmd BufNewFile * silent! 0r ~/.vim/skel/template.%:e
+autocmd BufWritePre * :%s/\s\+$//e
+let g:tex_no_error = 0
+let g:gist_private = 1
 
 " vim:ft=vim:
