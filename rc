@@ -67,6 +67,8 @@ nnoremap Q <nop>
 inoremap <f1> <nop>
 vnoremap <f1> <nop>
 nnoremap <f1> <nop>
+nnoremap <c-t> :NERDTree<cr>
+let NERDTreeIgnore=['\.log$', '\~$', '\.out', '\.aux']
 
 " formatting
 set autoindent
