@@ -72,7 +72,12 @@ nnoremap Q <nop>
 inoremap <f1> <nop>
 vnoremap <f1> <nop>
 nnoremap <f1> <nop>
-nnoremap <c-t> :NERDTree<cr>
+nnoremap <c-t> :NERDTreeToggle<cr>
+inoremap () ()<left>
+inoremap [] []<left>
+inoremap '' ''<left>
+inoremap "" ""<left>
+
 let NERDTreeIgnore=['\.log$', '\~$', '\.out', '\.aux']
 
 " formatting
@@ -147,7 +152,6 @@ autocmd FileType ruby,javascript    set sts=2 ts=2 sw=2 et nu
 autocmd FileType tex                set sts=2 ts=2 sw=2 et wrap
 autocmd FileType pod                set spell
 autocmd FileType c,cpp              set ts=2 et sts=2 sw=2
-
 autocmd BufReadPost *
                \ if line("'\"") > 1 && line("'\"") <= line("$") |
                \   exe "normal! g`\"" |
