@@ -98,6 +98,7 @@ set fileformat=unix
 set printencoding=utf8
 
 " display
+set nofoldenable
 set lazyredraw
 set list
 set listchars=tab:\ \ ,trail:·
@@ -142,12 +143,11 @@ filetype plugin on
 filetype indent on
 syntax enable
 
-autocmd BufNewFile,BufRead *.c.rl    set ft=ragel sts=8 ts=8 sw=8 noet
-autocmd BufNewFile,BufRead *.ru,Rakefile,Gemfile,Capfile    set ft=ruby sts=2 ts=2 sw=2 et
-autocmd BufNewFile,BufRead *.html    set ts=4 sw=4
-autocmd BufNewFile,BufRead *.js,*.rb    set sts=2 ts=2 sw=2 et
-autocmd BufNewFile,BufRead *.tex    set sts=2 ts=2 sw=2 et wrap
-autocmd BufNewFile,BufRead *.markdown,*.mkd,*.md    set tw=100 ts=2 sw=2 et wrap
+autocmd BufNewFile,BufRead *.ru,Rakefile,Gemfile,Capfile    set ft=ruby
+autocmd BufNewFile,BufRead *.html   set ts=4 sw=4
+autocmd FileType markdown           set tw=100 ts=2 sw=2 et wrap
+autocmd FileType ruby,javascript    set sts=2 ts=2 sw=2 et nu
+autocmd FileType tex                set sts=2 ts=2 sw=2 et wrap
 
 autocmd BufReadPost *
             \ if line("'\"") > 1 && line("'\"") <= line("$") |
