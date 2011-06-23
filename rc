@@ -117,8 +117,9 @@ set wildignore=*.o,*.obj,*~,.svn,CVS,.git,.hg,*.a
 set wildmenu
 set wildmode=list:longest
 set noshowmatch
-highlight pmenu ctermbg=238 gui=bold
-highlight specialkey ctermfg=red guifg=red
+highlight pmenu ctermbg=white
+highlight pmenusel ctermfg=white ctermbg=black
+highlight specialkey ctermfg=red
 
 " system
 set virtualedit=all
@@ -144,15 +145,18 @@ filetype indent on
 syntax enable
 
 autocmd BufNewFile,BufRead *.ru,Rakefile,Gemfile,Capfile    set ft=ruby
+autocmd BufNewFile,BufRead *.i    set ft=swig
 autocmd BufNewFile,BufRead *.html   set ts=4 sw=4
 autocmd FileType markdown           set tw=100 ts=2 sw=2 et wrap
 autocmd FileType ruby,javascript    set sts=2 ts=2 sw=2 et nu
 autocmd FileType tex                set sts=2 ts=2 sw=2 et wrap
+autocmd FileType pod                set spell
+autocmd FileType c,cpp              set ts=2 et sts=2 sw=2
 
-autocmd BufReadPost *
-            \ if line("'\"") > 1 && line("'\"") <= line("$") |
-            \   exe "normal! g`\"" |
-            \ endif
+   autocmd BufReadPost *
+               \ if line("'\"") > 1 && line("'\"") <= line("$") |
+               \   exe "normal! g`\"" |
+               \ endif
 autocmd BufNewFile * silent! 0r ~/.vim/skel/template.%:e
 autocmd BufWritePre * :%s/\s\+$//e
 let g:tex_no_error = 0

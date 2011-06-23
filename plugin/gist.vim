@@ -1,8 +1,8 @@
 "=============================================================================
 " File: gist.vim
 " Author: Yasuhiro Matsumoto <mattn.jp@gmail.com>
-" Last Change: 18-Apr-2011.
-" Version: 4.9
+" Last Change: 15-Jun-2011.
+" Version: 5.0
 " WebPage: http://github.com/mattn/gist-vim
 " License: BSD
 " Usage:
@@ -317,11 +317,13 @@ function! s:GistWrite(fname)
     Gist -e
   else
     exe "w".(v:cmdbang ? "!" : "")." ".fnameescape(v:cmdarg)." ".fnameescape(a:fname)
+    silent! exe "file ".fnameescape(a:fname)
+    silent! au! BufWriteCmd <buffer>
   endif
 endfunction
 
 function! s:GistGet(user, token, gistid, clipboard)
-  let url = 'https://gist.github.com/'.a:gistid.'.txt'
+  let url = 'https://raw.github.com/gist/'.a:gistid
   let winnum = bufwinnr(bufnr(s:bufprefix.a:gistid))
   if winnum != -1
     if winnum != bufwinnr('%')

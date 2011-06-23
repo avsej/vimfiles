@@ -21,7 +21,6 @@ setlocal cindent
 " *N	vim searches for closing */ at most N lines away
 setlocal cinoptions=:0l1t0g0
 "setlocal cinoptions=>1s,e0,n0,f0,{0,}0,^0,:0,=2s,l1,g2s,h2s,p2s,t0,+1s,c1s,C0,/0,(0,u0,U0,w1,m1,j1,)20,*30
-setlocal tabstop=8 noet softtabstop=8 shiftwidth=8
 syn keyword cType uint ubyte ulong uint64_t uint32_t uint16_t uint8_t boolean_t int64_t int32_t int16_t int8_t u_int64_t u_int32_t u_int16_t u_int8_t timing_t
 syn keyword cOperator likely unlikely
 set omnifunc=ccomplete#Complete
