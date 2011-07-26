@@ -93,7 +93,7 @@ set comments=sr:/*,mb:\ *,el:*/,://,b:#,:%,:xcomm,n:>,n:),fb:-
 
 " formats
 set encoding=utf-8
-set fileencodings=utf-8,japan,cp1251,koi8-r,cp866,iso-8859-15
+set fileencodings=utf-8,japan,koi8-r,cp1251,cp866,iso-8859-15
 set fileformat=unix
 set printencoding=utf8
 
@@ -130,7 +130,7 @@ set printoptions=paper:a4,wrap:y,syntax:n,formfeed:y
 set backupdir=~/.vim/tmp/backup
 set directory=~/.vim/tmp/swap
 set backup
-set grepprg=grep\ -nHR\ $*
+set grepprg=grep\ -nHRI\ $*
 set hidden
 set history=128
 set joinspaces
@@ -160,6 +160,6 @@ autocmd FileType c,cpp              set ts=2 et sts=2 sw=2
 autocmd BufNewFile * silent! 0r ~/.vim/skel/template.%:e
 autocmd BufWritePre * :%s/\s\+$//e
 let g:tex_no_error = 0
-let g:gist_private = 1
+"let g:gist_private = 1
 
 " vim:ft=vim:
