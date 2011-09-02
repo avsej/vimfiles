@@ -42,6 +42,7 @@ inoreabbrev Im I'm
 inoreabbrev shoudl should
 inoreabbrev teh the
 inoreabbrev yuo you
+inoreabbrev cdate <c-r>=strftime("%Y-%m-%d")<cr>
 
 " mappings
 set pastetoggle=<f12>
@@ -78,15 +79,18 @@ inoremap [] []<left>
 inoremap '' ''<left>
 inoremap "" ""<left>
 
+nnoremap <c-w><c-e> :copen<cr>
+
 let NERDTreeIgnore=['\.log$', '\~$', '\.out', '\.aux']
 
 " formatting
-set autoindent
+set autoindent smartindent
+set smarttab
 set formatoptions=wrqn
 set whichwrap+=<,>,[,]
 set nowrap
 set linebreak
-set textwidth=72
+set textwidth=78
 set backspace=indent,eol,start
 set comments=sr:/*,mb:\ *,el:*/,://,b:#,:%,:xcomm,n:>,n:),fb:-
 " set number
@@ -97,11 +101,19 @@ set fileencodings=utf-8,japan,koi8-r,cp1251,cp866,iso-8859-15
 set fileformat=unix
 set printencoding=utf8
 
+set printexpr=PrintFile(v:fname_in)
+function PrintFile(fname)
+    call system("lp " . a:fname)
+    call delete(a:fname)
+    return v:shell_error
+endfunc
+
 " display
 set nofoldenable
 set lazyredraw
 set list
 set listchars=tab:\ \ ,trail:·
+
 set ruler
 set rulerformat=%30(%=%y\ %c,%l\ %P%)
 set scrolloff=0
@@ -122,11 +134,11 @@ highlight pmenusel ctermfg=white ctermbg=black
 highlight specialkey ctermfg=red
 
 " system
-set virtualedit=all
+set virtualedit=
 set modeline
 set ttyfast
 set autowrite
-set printoptions=paper:a4,wrap:y,syntax:n,formfeed:y
+set printoptions=paper:a4,wrap:y,syntax:y,formfeed:y
 set backupdir=~/.vim/tmp/backup
 set directory=~/.vim/tmp/swap
 set backup
@@ -145,14 +157,15 @@ filetype indent on
 syntax enable
 
 autocmd BufNewFile,BufRead *.ru,Rakefile,Gemfile,Capfile    set ft=ruby
-autocmd BufNewFile,BufRead *.i    set ft=swig
 autocmd BufNewFile,BufRead *.html   set ts=4 sw=4
-autocmd FileType markdown           set tw=100 ts=2 sw=2 et wrap
+autocmd FileType markdown           set tw=72 ts=2 sw=2 et wrap
 autocmd FileType ruby,javascript    set sts=2 ts=2 sw=2 et nu
 autocmd FileType tex                set sts=2 ts=2 sw=2 et wrap
 autocmd FileType pod                set spell
-autocmd FileType c,cpp              set ts=2 et sts=2 sw=2
+"autocmd FileType c,cpp              set ts=2 et sts=2 sw=2
+autocmd FileType c,cpp              set ts=8 sw=8 sts=4 noet
 
+<<<<<<< HEAD
 " Transparent editing of gpg encrypted files.
 " By Wouter Hanegraaff
 augroup encrypted
@@ -180,12 +193,13 @@ augroup encrypted
 augroup END
 
 autocmd BufReadPost *
-               \ if line("'\"") > 1 && line("'\"") <= line("$") |
-               \   exe "normal! g`\"" |
-               \ endif
+            \ if line("'\"") > 1 && line("'\"") <= line("$") |
+            \   exe "normal! g`\"" |
+            \ endif
 autocmd BufNewFile * silent! 0r ~/.vim/skel/template.%:e
 autocmd BufWritePre * :%s/\s\+$//e
 let g:tex_no_error = 0
+let g:c_syntax_for_h = 1
 "let g:gist_private = 1
 
 " vim:ft=vim:

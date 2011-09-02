@@ -34,7 +34,7 @@ let s:doneFunctionDefinitions=1
 
 " Local settings
 function s:SetErlangOptions()
-	compiler erlang
+"    compiler erlang
 	if version >= 700
 		setlocal omnifunc=erlangcomplete#Complete
 	endif
