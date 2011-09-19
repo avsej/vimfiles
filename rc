@@ -1,8 +1,8 @@
-set nocompatible
-
 if (($term == "rxvt-unicode") || ($term =~ "xterm") || ($term =~ "screen")) && (&termencoding == "")
     set termencoding=utf-8
 endif
+
+set nocompatible
 
 if has('eval')
     let mapleader=","
@@ -42,12 +42,13 @@ inoreabbrev Im I'm
 inoreabbrev shoudl should
 inoreabbrev teh the
 inoreabbrev yuo you
+inoreabbrev yeild yield
+inoreabbrev yeilds yields
 inoreabbrev cdate <c-r>=strftime("%Y-%m-%d")<cr>
 
 " mappings
 set pastetoggle=<f12>
 set langmap=йq,цw,уe,кr,еt,нy,гu,шi,щo,зp,х[,ъ],фa,ыs,вd,аf,пg,рh,оj,лk,дl,ж\\;,э',яz,чx,сc,мv,иb,тn,ьm,б\\,,ю.,ё`,ЙQ,ЦW,УE,КR,ЕT,НY,ГU,ШI,ЩO,ЗP,Х{,Ъ},ФA,ЫS,ВD,АF,ПG,РH,ОJ,ЛK,ДL,Ж:,Э\\",ЯZ,ЧX,СC,МV,ИB,ТN,ЬM,Б<,Ю>,Ё~
-vnoremap <down> <nop>
 vnoremap < <gv
 vnoremap > >gv
 vmap <silent> j gj
@@ -55,6 +56,7 @@ vmap <silent> k gk
 nmap <silent> j gj
 nmap <silent> k gk
 
+vnoremap <down> <nop>
 vnoremap <left> <nop>
 vnoremap <right> <nop>
 vnoremap <up> <nop>
@@ -68,20 +70,17 @@ nnoremap <left> <nop>
 nnoremap <right> <nop>
 nnoremap <up> <nop>
 nnoremap Y y$
-nnoremap <leader><space> :set hlsearch
+nnoremap <silent> <c-n> :set invhlsearch<cr>
 nnoremap Q <nop>
 inoremap <f1> <nop>
 vnoremap <f1> <nop>
 nnoremap <f1> <nop>
-nnoremap <c-t> :NERDTreeToggle<cr>
-inoremap () ()<left>
-inoremap [] []<left>
-inoremap '' ''<left>
-inoremap "" ""<left>
+"   inoremap () ()<left>
+"   inoremap [] []<left>
+"   inoremap '' ''<left>
+"   inoremap "" ""<left>
 
 nnoremap <c-w><c-e> :copen<cr>
-
-let NERDTreeIgnore=['\.log$', '\~$', '\.out', '\.aux']
 
 " formatting
 set autoindent smartindent
@@ -90,7 +89,7 @@ set formatoptions=wrqn
 set whichwrap+=<,>,[,]
 set nowrap
 set linebreak
-set textwidth=78
+set textwidth=76
 set backspace=indent,eol,start
 set comments=sr:/*,mb:\ *,el:*/,://,b:#,:%,:xcomm,n:>,n:),fb:-
 " set number
@@ -138,7 +137,7 @@ set virtualedit=
 set modeline
 set ttyfast
 set autowrite
-set printoptions=paper:a4,wrap:y,syntax:y,formfeed:y
+set printoptions=paper:a4,wrap:y,syntax:n,formfeed:y
 set backupdir=~/.vim/tmp/backup
 set directory=~/.vim/tmp/swap
 set backup
@@ -156,6 +155,7 @@ filetype plugin on
 filetype indent on
 syntax enable
 
+autocmd BufNewFile,BufRead *.sls    set ft=scheme
 autocmd BufNewFile,BufRead *.ru,Rakefile,Gemfile,Capfile    set ft=ruby
 autocmd BufNewFile,BufRead *.html   set ts=4 sw=4
 autocmd FileType markdown           set tw=72 ts=2 sw=2 et wrap
@@ -165,7 +165,6 @@ autocmd FileType pod                set spell
 "autocmd FileType c,cpp              set ts=2 et sts=2 sw=2
 autocmd FileType c,cpp              set ts=8 sw=8 sts=4 noet
 
-<<<<<<< HEAD
 " Transparent editing of gpg encrypted files.
 " By Wouter Hanegraaff
 augroup encrypted
