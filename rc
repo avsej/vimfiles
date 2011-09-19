@@ -83,20 +83,19 @@ nnoremap <f1> <nop>
 nnoremap <c-w><c-e> :copen<cr>
 
 " formatting
-set autoindent smartindent
-set smarttab
-set formatoptions=wrqn
+set autoindent smartindent smarttab
+set formatoptions=cowrqn
 set whichwrap+=<,>,[,]
 set nowrap
 set linebreak
 set textwidth=76
 set backspace=indent,eol,start
-set comments=sr:/*,mb:\ *,el:*/,://,b:#,:%,:xcomm,n:>,n:),fb:-
+set comments=sr:/*,mb:\ *,el:*/,://,b:;,b:#,:%,:xcomm,n:>,n:),fb:-
 " set number
 
 " formats
 set encoding=utf-8
-set fileencodings=utf-8,japan,koi8-r,cp1251,cp866,iso-8859-15
+set fileencodings=utf-8,koi8-r,cp1251,cp866,iso-8859-15
 set fileformat=unix
 set printencoding=utf8
 
@@ -132,6 +131,23 @@ highlight pmenu ctermbg=white
 highlight pmenusel ctermfg=white ctermbg=black
 highlight specialkey ctermfg=red
 
+" C settings
+"let c_comment_strings=1
+"let c_comment_numbers=1
+"let c_comment_types=1
+"let c_cpp_comments=1
+let c_C99=1
+let c_c_vim_compatible=1
+"let c_comment_date_time=1
+let c_warn_nested_comments=1
+let c_ansi_typedefs=1
+let c_ansi_constants=1
+let c_posix=1
+let c_minlines=25
+let c_C89=1
+let c_gnu=1
+let c_syntax_for_h=1
+
 " system
 set virtualedit=
 set modeline
@@ -162,7 +178,6 @@ autocmd FileType markdown           set tw=72 ts=2 sw=2 et wrap
 autocmd FileType ruby,javascript    set sts=2 ts=2 sw=2 et nu
 autocmd FileType tex                set sts=2 ts=2 sw=2 et wrap
 autocmd FileType pod                set spell
-"autocmd FileType c,cpp              set ts=2 et sts=2 sw=2
 autocmd FileType c,cpp              set ts=8 sw=8 sts=4 noet
 
 " Transparent editing of gpg encrypted files.
