@@ -32,11 +32,6 @@ syn case ignore
 syn region schemeSrfi62CommentParen start="(" end=")" contains=schemeSrfi62CommentParen transparent
 syn region schemeSrfi62CommentParen start="\[" end="\]" contains=schemeSrfi62CommentParen transparent
 
-" Fascist highlighting: everything that doesn't fit the rules is an error...
-
-syn match	schemeError	    ![^# \t()\[\]";]*!
-syn match	schemeError	    ")"
-
 " Quoted and backquoted stuff
 
 syn region schemeQuoted matchgroup=Delimiter start="['`]" end=![ \t()\[\]";]!me=e-1 contains=ALLBUT,schemeStruc,schemeSyntax,schemeFunc
@@ -143,14 +138,10 @@ syn match	schemeOther	    ![+-][ \t\[\]()";]!me=e-1
 syn match	schemeOther	    ![+-]$!
 "
 " This is a useful lax approximation:
-syn match	schemeNumber	    "[-+0-9.][-#+/0-9a-f@i.boxesfdl]*"
-syn match	schemeError	    ![-+0-9.][-#+/0-9a-f@i.boxesfdl]*[^-#+/0-9a-f@i.boxesfdl \t\[\]()";][^ \t\[\]()";]*!
+syn match	schemeNumber	    "[-+]\?[0-9.][-#+/0-9a-f@i.boxesfdl]*"
 syn match	schemeNumber	    "#[-#+/0-9a-f@i.boxesfdl]+"
-syn match	schemeError	    !#[-#+/0-9a-f@i.boxesfdl]+[^-#+/0-9a-f@i.boxesfdl \t\[\]()";][^ \t\[\]()";]*!
 syn match	schemeNumber	    "[-+]inf\.0"
-syn match	schemeError	    "[-+]inf\.0[^-#+/0-9a-f@i.boxesfdl \t\[\]()";][^ \t\[\]()";]*"
 syn match	schemeNumber	    "+nan\.0"
-syn match	schemeError	    "+nan\.0[^-#+/0-9a-f@i.boxesfdl \t\[\]()";][^ \t\[\]()";]*"
 
 syn match	schemeBoolean	    "#[tf]"
 syn match	schemeError	    !#[tf][^ \t\[\]()";]\+!
