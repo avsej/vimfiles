@@ -171,14 +171,15 @@ filetype plugin on
 filetype indent on
 syntax enable
 
-autocmd BufNewFile,BufRead *.sls    set ft=scheme
-autocmd BufNewFile,BufRead *.ru,Rakefile,Gemfile,Capfile    set ft=ruby
-autocmd BufNewFile,BufRead *.html   set ts=4 sw=4
-autocmd FileType markdown           set tw=72 ts=2 sw=2 et wrap
-autocmd FileType ruby,javascript    set sts=2 ts=2 sw=2 et nu
-autocmd FileType tex                set sts=2 ts=2 sw=2 et wrap
-autocmd FileType pod                set spell
-autocmd FileType c,cpp              set ts=8 sw=8 sts=4 noet
+autocmd BufNewFile,BufRead *.sls                            setlocal ft=scheme
+autocmd BufNewFile,BufRead *.ru,Rakefile,Gemfile,Capfile    setlocal ft=ruby
+autocmd BufNewFile,BufRead *.html                           setlocal ts=4 sw=4
+autocmd FileType markdown                                   setlocal tw=72 ts=2 sw=2 et wrap
+autocmd FileType ruby,javascript                            setlocal sts=2 ts=2 sw=2 et nu
+autocmd FileType ruby                                       setlocal makeprg=rake
+autocmd FileType tex                                        setlocal sts=2 ts=2 sw=2 et wrap
+autocmd FileType pod                                        setlocal spell
+autocmd FileType c,cpp                                      setlocal ts=8 sw=8 sts=4 noet
 
 " Transparent editing of gpg encrypted files.
 " By Wouter Hanegraaff
