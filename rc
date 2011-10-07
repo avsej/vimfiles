@@ -212,7 +212,7 @@ autocmd BufReadPost *
             \   exe "normal! g`\"" |
             \ endif
 autocmd BufNewFile * silent! 0r ~/.vim/skel/template.%:e
-"autocmd BufWritePre * :%s/\s\+$//e
+autocmd BufWritePre * :%s/\s\+$//e
 let g:tex_no_error = 0
 let g:c_syntax_for_h = 1
 "let g:gist_private = 1
