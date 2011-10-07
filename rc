@@ -52,11 +52,13 @@ set pastetoggle=<f12>
 set langmap=йq,цw,уe,кr,еt,нy,гu,шi,щo,зp,х[,ъ],фa,ыs,вd,аf,пg,рh,оj,лk,дl,ж\\;,э',яz,чx,сc,мv,иb,тn,ьm,б\\,,ю.,ё`,ЙQ,ЦW,УE,КR,ЕT,НY,ГU,ШI,ЩO,ЗP,Х{,Ъ},ФA,ЫS,ВD,АF,ПG,РH,ОJ,ЛK,ДL,Ж:,Э\\",ЯZ,ЧX,СC,МV,ИB,ТN,ЬM,Б<,Ю>,Ё~
 vnoremap < <gv
 vnoremap > >gv
-vmap <silent> j gj
-vmap <silent> k gk
-nmap <silent> j gj
-nmap <silent> k gk
+vnoremap <silent> j gj
+vnoremap <silent> k gk
+nnoremap <silent> j gj
+nnoremap <silent> k gk
 
+nnoremap <M-p> :bp <CR>
+nnoremap <M-n> :bn <CR>
 vnoremap <down> <nop>
 vnoremap <left> <nop>
 vnoremap <right> <nop>
@@ -76,10 +78,6 @@ nnoremap Q <nop>
 inoremap <f1> <nop>
 vnoremap <f1> <nop>
 nnoremap <f1> <nop>
-"   inoremap () ()<left>
-"   inoremap [] []<left>
-"   inoremap '' ''<left>
-"   inoremap "" ""<left>
 
 nnoremap <c-w><c-e> :copen<cr>
 
@@ -100,12 +98,6 @@ set fileencodings=utf-8,koi8-r,cp1251,cp866,iso-8859-15
 set fileformat=unix
 set printencoding=utf8
 
-set printexpr=PrintFile(v:fname_in)
-function PrintFile(fname)
-    call system("lp " . a:fname)
-    call delete(a:fname)
-    return v:shell_error
-endfunc
 
 " display
 set nofoldenable
@@ -149,6 +141,12 @@ let c_minlines=25
 let c_C89=1
 let c_gnu=1
 let c_syntax_for_h=1
+
+set printexpr=PrintFile(v:fname_in)
+function PrintFile(fname)
+  echo a:fname
+  return v:shell_error
+endfunc
 
 " system
 set virtualedit=
