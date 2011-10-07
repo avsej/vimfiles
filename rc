@@ -44,6 +44,7 @@ inoreabbrev teh the
 inoreabbrev yuo you
 inoreabbrev yeild yield
 inoreabbrev yeilds yields
+inoreabbrev desing design
 inoreabbrev cdate <c-r>=strftime("%Y-%m-%d")<cr>
 
 " mappings
@@ -110,7 +111,8 @@ endfunc
 set nofoldenable
 set lazyredraw
 set list
-set listchars=tab:\ \ ,trail:·
+" set listchars=tab:\ \ ,trail:·
+set listchars=tab:>-,trail:·
 
 set ruler
 set rulerformat=%30(%=%y\ %c,%l\ %P%)
@@ -212,7 +214,7 @@ autocmd BufReadPost *
             \   exe "normal! g`\"" |
             \ endif
 autocmd BufNewFile * silent! 0r ~/.vim/skel/template.%:e
-autocmd BufWritePre * :%s/\s\+$//e
+"autocmd BufWritePre * :%s/\s\+$//e
 let g:tex_no_error = 0
 let g:c_syntax_for_h = 1
 "let g:gist_private = 1
