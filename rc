@@ -46,6 +46,7 @@ inoreabbrev yeild yield
 inoreabbrev yeilds yields
 inoreabbrev desing design
 inoreabbrev cdate <c-r>=strftime("%Y-%m-%d")<cr>
+inoreabbrev tstamp <c-r>=strftime("%Y-%m-%d %H:%M:%S")<cr><cr>===================
 
 " mappings
 set pastetoggle=<f12>
@@ -144,8 +145,9 @@ let c_syntax_for_h=1
 
 set printexpr=PrintFile(v:fname_in)
 function PrintFile(fname)
-  echo a:fname
-  return v:shell_error
+    call system("lp " . a:fname)
+    call delete(a:fname)
+    return v:shell_error
 endfunc
 
 " system
