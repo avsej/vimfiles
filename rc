@@ -125,6 +125,15 @@ set noshowmatch
 highlight pmenu ctermbg=white
 highlight pmenusel ctermfg=white ctermbg=black
 highlight specialkey ctermfg=red
+highlight DiffAdd       ctermfg=green    ctermbg=white cterm=NONE
+highlight DiffChange    ctermfg=green     ctermbg=white cterm=NONE
+highlight DiffText      ctermfg=black    ctermbg=white cterm=NONE
+highlight DiffDelete    ctermfg=red      ctermbg=white cterm=NONE
+
+"   highlight DiffAdd term=reverse cterm=bold ctermbg=green ctermfg=white
+"   highlight DiffChange term=reverse cterm=bold ctermbg=cyan ctermfg=black
+"   highlight DiffText term=reverse cterm=bold ctermbg=gray ctermfg=black
+"   highlight DiffDelete term=reverse cterm=bold ctermbg=red ctermfg=black
 
 " C settings
 "let c_comment_strings=1
@@ -215,6 +224,11 @@ autocmd BufReadPost *
             \ endif
 autocmd BufNewFile * silent! 0r ~/.vim/skel/template.%:e
 autocmd BufWritePre * :%s/\s\+$//e
+
+if &diff
+    filetype off
+endif
+
 let g:tex_no_error = 0
 let g:c_syntax_for_h = 1
 "let g:gist_private = 1
