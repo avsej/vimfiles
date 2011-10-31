@@ -119,6 +119,13 @@ function! s:RefreshGitStatus()
     call setpos('.', pos_save)
 endfunction
 
+" Show Object.
+function! GitShow(args)
+    let git_output = s:SystemGit('show ' . a:args)
+    call <SID>OpenGitBuffer(git_output)
+    setlocal filetype=git-log
+endfunction
+
 " Show Log.
 function! GitLog(args)
     let git_output = s:SystemGit('log ' . a:args . ' -- ' . s:Expand('%'))
@@ -362,6 +369,7 @@ command! -nargs=* -complete=customlist,ListGitCommits GitDiff     call GitDiff(<
 command!          GitStatus           call GitStatus()
 command! -nargs=? GitAdd              call GitAdd(<q-args>)
 command! -nargs=* GitLog              call GitLog(<q-args>)
+command! -nargs=* GitShow             call GitShow(<q-args>)
 command! -nargs=* GitCommit           call GitCommit(<q-args>)
 command! -nargs=1 GitCatFile          call GitCatFile(<q-args>)
 command! -nargs=? GitBlame            call GitBlame(<q-args>)
