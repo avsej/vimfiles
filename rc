@@ -79,6 +79,7 @@ nnoremap Q <nop>
 inoremap <f1> <nop>
 vnoremap <f1> <nop>
 nnoremap <f1> <nop>
+cnoremap <c-a> <home>
 
 nnoremap <c-w><c-e> :copen<cr>
 
@@ -223,7 +224,10 @@ autocmd BufReadPost *
             \   exe "normal! g`\"" |
             \ endif
 autocmd BufNewFile * silent! 0r ~/.vim/skel/template.%:e
-autocmd BufWritePre * :%s/\s\+$//e
+autocmd BufWritePre *
+            \ if !exists("b:keep_trailing_spaces")  |
+            \   :%s/\s\+$//e                        |
+            \ endif
 
 if &diff
     filetype off
