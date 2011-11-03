@@ -1,17 +1,17 @@
 *Gist.vim* Vimscript for creating gists (http://gist.github.com)
 
-Usage                                          |gist-vim-usage|
-Tips                                           |gist-vim-tips|
-Requirements                                   |gist-vim-requirements|
-License                                        |gist-vim-license|
-Install                                        |gist-vim-install|
+Usage                                          |gist-vim-usage| 
+Tips                                           |gist-vim-tips| 
+Requirements                                   |gist-vim-requirements| 
+License                                        |gist-vim-license| 
+Install                                        |gist-vim-install| 
 
-This is a vimscript for creating gists (http://gist.github.com)
+This is a vimscript for creating gists (http://gist.github.com) 
 
 For the latest version please see https://github.com/mattn/gist-vim.
 
 ==============================================================================
-USAGE                                                         *gist-vim-usage*
+USAGE                                                 *:Gist* *gist-vim-usage* 
 
 - Post current buffer to gist, using default privacy option. >
 
@@ -70,7 +70,7 @@ USAGE                                                         *gist-vim-usage*
   Password authentication is needed. >
 
     :Gist -f
-<
+< 
 - Get gist XXXXX. >
 
     :Gist XXXXX
@@ -146,13 +146,13 @@ LICENSE                                                     *gist-vim-license*
 
   Copyright 2010 by Yasuhiro Matsumoto
   modification, are permitted provided that the following conditions are met:
-
+  
   1. Redistributions of source code must retain the above copyright notice,
      this list of conditions and the following disclaimer.
   2. Redistributions in binary form must reproduce the above copyright notice,
      this list of conditions and the following disclaimer in the documentation
      and/or other materials provided with the distribution.
-
+  
   THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
   ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
   LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS
@@ -178,5 +178,23 @@ rtp:
   - cookies/github
 
 If you want to uninstall gist.vim, remember to also remove "cookies/github".
+
+==============================================================================
+THANKS                                                     *gist-vim-thanks*
+
+  AD7six
+  Bruno Bigras
+  c9s
+  Daniel Bretoi
+  Jeremy Michael Cantrell
+  Kien N
+  kongo2002
+  MATSUU Takuto
+  Matthew Weier O'Phinney
+  ornicar
+  Roland Schilter
+  steve
+  tyru
+  Will Gray
 
  vim:tw=78:ts=8:ft=help:norl:
