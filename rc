@@ -169,7 +169,7 @@ set printoptions=paper:a4,wrap:y,syntax:n,formfeed:y
 set backupdir=~/.vim/tmp/backup
 set directory=~/.vim/tmp/swap
 set backup
-set grepprg=grep\ -nHRI\ $*
+set grepprg=grep\ -nsHRI\ $*
 set hidden
 set history=128
 set joinspaces
