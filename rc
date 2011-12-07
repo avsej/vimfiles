@@ -60,6 +60,7 @@ nnoremap <silent> k gk
 
 nnoremap <M-p> :bp <CR>
 nnoremap <M-n> :bn <CR>
+nnoremap <C-t> xph
 vnoremap <down> <nop>
 vnoremap <left> <nop>
 vnoremap <right> <nop>
