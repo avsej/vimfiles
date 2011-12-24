@@ -45,7 +45,8 @@ inoreabbrev yuo you
 inoreabbrev yeild yield
 inoreabbrev yeilds yields
 inoreabbrev desing design
-inoreabbrev cdate <c-r>=strftime("%Y-%m-%d")<cr>
+inoreabbrev cdate2822 <c-r>=strftime("%a, %d %b %Y %H:%M:%S %z")<cr>
+inoreabbrev cdate8601 <c-r>=strftime("%Y-%m-%d")<cr>
 inoreabbrev tstamp <c-r>=strftime("%Y-%m-%d %H:%M:%S")<cr><cr>===================
 
 " mappings
