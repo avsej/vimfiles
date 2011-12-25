@@ -95,13 +95,13 @@ set textwidth=76
 set backspace=indent,eol,start
 set comments=sr:/*,mb:\ *,el:*/,://,b:;,b:#,:%,:xcomm,n:>,n:),fb:-
 " set number
+set nrformats=hex
 
 " formats
 set encoding=utf-8
 set fileencodings=utf-8,koi8-r,cp1251,cp866,iso-8859-15
 set fileformat=unix
 set printencoding=utf8
-
 
 " display
 set nofoldenable
@@ -119,7 +119,7 @@ set shortmess=atT
 set title
 set winminheight=1
 set noerrorbells
-set splitbelow
+set splitbelow splitright
 set cpoptions=$
 set wildignore=*.o,*.obj,*~,.svn,CVS,.git,.hg,*.a
 set wildmenu
