@@ -163,6 +163,7 @@ function PrintFile(fname)
 endfunc
 
 " system
+set clipboard=unnamedplus,unnamed
 set virtualedit=
 set modeline
 set ttyfast
