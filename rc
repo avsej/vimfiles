@@ -186,6 +186,7 @@ filetype plugin on
 filetype indent on
 syntax enable
 
+autocmd BufNewFile,BufRead *.s                              setlocal ft=gasm
 autocmd BufNewFile,BufRead *.sls                            setlocal ft=scheme
 autocmd BufNewFile,BufRead *.ru,Rakefile,Gemfile,Capfile    setlocal ft=ruby
 autocmd BufNewFile,BufRead *.html                           setlocal ts=4 sw=4
