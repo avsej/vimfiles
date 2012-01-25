@@ -242,7 +242,9 @@ autocmd BufReadPost *
 autocmd BufNewFile * silent! 0r ~/.vim/skel/template.%:e
 autocmd BufWritePre *
             \ if !exists("b:keep_trailing_spaces")  |
+            \   :mark t                             |
             \   :%s/\s\+$//e                        |
+            \   exe "normal! g't" |
             \ endif
 
 if &diff
