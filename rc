@@ -208,6 +208,7 @@ autocmd FileType ruby                                       setlocal makeprg=rak
 autocmd FileType tex                                        setlocal sts=2 ts=2 sw=2 et wrap
 autocmd FileType pod                                        setlocal spell
 autocmd FileType c,cpp                                      setlocal ts=8 sw=8 sts=4 noet
+autocmd FileType diff                                       setlocal noeol
 
 " Transparent editing of gpg encrypted files.
 " By Wouter Hanegraaff
@@ -242,9 +243,9 @@ autocmd BufReadPost *
 autocmd BufNewFile * silent! 0r ~/.vim/skel/template.%:e
 autocmd BufWritePre *
             \ if !exists("b:keep_trailing_spaces")  |
-            \   :mark t                             |
+            \   exe "normal! mt" |
             \   :%s/\s\+$//e                        |
-            \   exe "normal! g't" |
+            \   exe "normal! `t" |
             \ endif
 
 if &diff

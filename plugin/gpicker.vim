@@ -1,4 +1,4 @@
-"    Copyright: This program is free software: you can redistribute it and/or 
+"    Copyright: This program is free software: you can redistribute it and/or
 "               modify it under the terms of the GNU General Public License as
 "               published by the Free Software Foundation; either version 3 of the
 "               License, or (at your option) any later version.
@@ -29,7 +29,7 @@
 "
 "                 <Leader>mr - Opens the gpicker from directory of file.
 "                 <Leader>mg - Opens the gpicker from current directory.
-"                 <Leader>mb - Opens the gpicker to chose from list of 
+"                 <Leader>mb - Opens the gpicker to chose from list of
 "                 current buffers.
 "
 "               You can also use the command:
