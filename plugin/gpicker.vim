@@ -44,20 +44,25 @@ if exists("g:loaded_gpicker") || executable("gpicker") == 0
   finish
 endif
 
-command GPickFile :call <SID>GPickFile(".", "guess")
-command GPickFileDefault :call <SID>GPickFile(".", "default")
-command GPickFileFromHere :call <SID>GPickFile(expand("%:h"), "default")
-function! s:GPickFile(path, type)
+command GPickLocate :call <SID>GPickFile("edit", "/var/lib/mlocate/mlocate.db", "mlocate")
+command GPickFile :call <SID>GPickFile("edit", resolve("."), "guess")
+command GPickFileDefault :call <SID>GPickFile("edit", resolve("."), "default")
+command GPickFileFromHere :call <SID>GPickFile("edit", expand("%:h"), "default")
+function! s:GPickFile(cmd, path, type)
   if empty(a:path)
     let l:path = "."
   else
     let l:path = a:path
   endif
   " select file via gpicker
-  let l:filename = l:path . "/" . system('gpicker -t ' . a:type . " " . shellescape(l:path))
+  if a:type == "mlocate"
+    let l:filename = system('gpicker --eat-prefix="" -t mlocate ' . shellescape(l:path))
+  else
+    let l:filename = l:path . "/" . system('gpicker -t ' . a:type . " " . shellescape(l:path))
+  endif
   if filereadable(l:filename)
     " open selected file
-    execute "edit " . escape(l:filename, ' ')
+    execute a:cmd . " " . escape(resolve(expand(l:filename)), ' ')
   endif
 endfunction
 
@@ -76,6 +81,7 @@ function! s:GPickBuffer()
   execute "buffer " . substitute(l:selected, '[u%#ah=+x-]\+\s\+\d\+$', '', '')
 endfunction
 
+nmap <silent> <leader>mm :GPickLocate<cr>
 nmap <silent> <leader>mg :GPickFile<cr>
 nmap <silent> <leader>mf :GPickFileDefault<cr>
 nmap <silent> <leader>mr :GPickFileFromHere<cr>
