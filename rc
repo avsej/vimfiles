@@ -13,7 +13,7 @@ if has("gui_running")
     set background=light
     set guicursor=a:blinkwait0,a:block-cursor
     set guifont=DejaVu\ Sans\ Mono\ 8
-    set guioptions-=mtTlr
+    set guioptions=aegiLt
 endif
 
 if has("extra_search")
@@ -255,5 +255,9 @@ endif
 let g:tex_no_error = 0
 let g:c_syntax_for_h = 1
 "let g:gist_private = 1
+
+highlight Normal guibg=#dedede
+highlight String guifg=#ee0000
+highlight Visual guibg=grey
 
 " vim:ft=vim:
