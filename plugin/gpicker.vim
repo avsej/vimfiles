@@ -17,8 +17,8 @@
 "  Maintainers: Sergey Avseyev <sergey.avseyev@gmail.com>
 " Contributors:
 "
-" Release Date: August 17, 2010
-"      Version: 0.3
+" Release Date: May 15, 2012
+"      Version: 0.5
 "     Keywords: autocompletion
 "
 "      Install: Copy file into ~/.vim/plugin directory or put in .vimrc
@@ -29,14 +29,23 @@
 "
 "                 <Leader>mr - Opens the gpicker from directory of file.
 "                 <Leader>mg - Opens the gpicker from current directory.
+"                 <Leader>mf - The same as above, but don't guess SCM.
 "                 <Leader>mb - Opens the gpicker to chose from list of
-"                 current buffers.
+"                              current buffers.
+"                 <Leader>mm - Opens the gpicker feeding entries from
+"                              mlocate database (use g:gpicker_mlocate_db to
+"                              choose one, by default: "/var/lib/mlocate/mlocate.db")
 "
-"               You can also use the command:
+"               You can also use the commands correspondingly:
 "
-"                 ":GPickFile"
 "                 ":GPickFileFromHere"
+"                 ":GPickFile"
+"                 ":GPickFileDefault"
 "                 ":GPickBuffer"
+"                 ":GPickLocate"
+"
+"               To generate "mlocate.db" file in current directory you can
+"               use ":GGenLocateDB" command.
 "
 
 " Exit quickly when already loaded.
@@ -44,18 +53,27 @@ if exists("g:loaded_gpicker") || executable("gpicker") == 0
   finish
 endif
 
-command GPickLocate :call <SID>GPickFile("edit", "/var/lib/mlocate/mlocate.db", "mlocate")
-command GPickFile :call <SID>GPickFile("edit", resolve("."), "guess")
-command GPickFileDefault :call <SID>GPickFile("edit", resolve("."), "default")
+command GPickFile :call <SID>GPickFile("edit", "", "guess")
+command GPickFileDefault :call <SID>GPickFile("edit", "", "default")
 command GPickFileFromHere :call <SID>GPickFile("edit", expand("%:h"), "default")
+command GPickLocate :call <SID>GPickFile("edit", "", "mlocate")
+command GGenLocateDB :call system("updatedb -U " . getcwd() . " -o mlocate.db")
 function! s:GPickFile(cmd, path, type)
   if empty(a:path)
-    let l:path = "."
+    let l:path = getcwd()
   else
     let l:path = a:path
   endif
   " select file via gpicker
   if a:type == "mlocate"
+    if exists("g:gpicker_mlocate_db")
+      let l:path = g:gpicker_mlocate_db
+    else
+      let l:path = getcwd() . '/mlocate.db'
+      if filereadable(l:path) == 0
+        let l:path = "/var/lib/mlocate/mlocate.db"
+      endif
+    endif
     let l:filename = system('gpicker --eat-prefix="" -t mlocate ' . shellescape(l:path))
   else
     let l:filename = l:path . "/" . system('gpicker -t ' . a:type . " " . shellescape(l:path))
