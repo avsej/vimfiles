@@ -66,11 +66,11 @@ function! s:GPickFile(cmd, path, type)
   endif
   " select file via gpicker
   if a:type == "mlocate"
-    if exists("g:gpicker_mlocate_db")
-      let l:path = g:gpicker_mlocate_db
-    else
-      let l:path = getcwd() . '/mlocate.db'
-      if filereadable(l:path) == 0
+    let l:path = getcwd() . '/mlocate.db'
+    if filereadable(l:path) == 0
+      if exists("g:gpicker_mlocate_db")
+        let l:path = g:gpicker_mlocate_db
+      else
         let l:path = "/var/lib/mlocate/mlocate.db"
       endif
     endif
