@@ -192,6 +192,7 @@ set sessionoptions=curdir,buffers
 set shiftround
 set viminfo=<1000,s100,'1000,f1,:1000,/1000,n~/.vim/.viminfo
 set autoread
+set shell=/bin/bash
 
 filetype on
 filetype plugin on
