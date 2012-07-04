@@ -203,6 +203,7 @@ autocmd BufNewFile,BufRead *.s                              setlocal ft=gasm
 autocmd BufNewFile,BufRead *.sls                            setlocal ft=scheme
 autocmd BufNewFile,BufRead *.ru,Rakefile,Gemfile,Capfile    setlocal ft=ruby
 autocmd BufNewFile,BufRead *.html                           setlocal ts=4 sw=4
+autocmd BufNewFile,BufRead .tmux.conf                       setlocal ft=tmux
 autocmd FileType markdown                                   setlocal tw=72 ts=2 sw=2 et wrap fo-=t
 autocmd FileType ruby,javascript                            setlocal sts=2 ts=2 sw=2 et nu
 autocmd FileType ruby                                       setlocal makeprg=rake
