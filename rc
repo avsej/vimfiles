@@ -119,8 +119,8 @@ set printencoding=utf8
 set nofoldenable
 set lazyredraw
 set list
-" set listchars=tab:\ \ ,trail:·
-set listchars=tab:>-,trail:·
+set listchars=tab:\ \ ,trail:·
+" set listchars=tab:>-,trail:·
 
 set ruler
 set rulerformat=%30(%=%y\ %c,%l\ %P%)
@@ -211,6 +211,7 @@ autocmd FileType tex                                        setlocal sts=2 ts=2 
 autocmd FileType pod                                        setlocal spell
 autocmd FileType c,cpp                                      setlocal ts=8 sw=8 sts=4 noet
 autocmd FileType diff                                       setlocal noeol
+autocmd FileType make                                       setlocal listchars=tab:>-,trail:·
 
 " Transparent editing of gpg encrypted files.
 " By Wouter Hanegraaff
