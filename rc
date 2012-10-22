@@ -119,8 +119,8 @@ set printencoding=utf8
 set nofoldenable
 set lazyredraw
 set list
-set listchars=tab:\ \ ,trail:·
-" set listchars=tab:>-,trail:·
+" set listchars=tab:\ \ ,trail:·
+set listchars=tab:>-,trail:·
 
 set ruler
 set rulerformat=%30(%=%y\ %c,%l\ %P%)
@@ -132,7 +132,7 @@ set title
 set winminheight=1
 set noerrorbells
 set splitbelow splitright
-set cpoptions=$
+set cpoptions=$J
 set wildignore=*.o,*.obj,*~,.svn,CVS,.git,.hg,*.a
 set wildmenu
 set wildmode=list:longest
