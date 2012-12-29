@@ -82,7 +82,6 @@ inoremap <down> <esc>
 inoremap <left> <esc>
 inoremap <right> <esc>
 inoremap <up> <esc>
-inoremap kj <esc>
 nnoremap <down> <nop>
 nnoremap <left> <nop>
 nnoremap <right> <nop>
