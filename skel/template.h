@@ -15,12 +15,15 @@
  *   limitations under the License.
  */
 
-#include <unistd.h>
-#include <stdlib.h>
-#include <stdio.h>
+#ifndef TEMPLATE_H
+#define TEMPLATE_H 1
 
-    int
-main(int argc, char *argv[])
-{
-    return 0;
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+
+#ifdef __cplusplus
 }
+#endif
+#endif
