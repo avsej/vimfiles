@@ -202,7 +202,7 @@ autocmd BufNewFile,BufRead *.s                              setlocal ft=gasm
 autocmd BufNewFile,BufRead *.sls                            setlocal ft=scheme
 autocmd BufNewFile,BufRead *.stp                            setlocal ft=stap
 autocmd BufNewFile,BufRead *.ru,Rakefile,Gemfile,Capfile    setlocal ft=ruby
-autocmd BufNewFile,BufRead *.html                           setlocal ts=4 sw=4
+autocmd BufNewFile,BufRead *.html                           setlocal ts=2 sw=2
 autocmd BufNewFile,BufRead *.asc                            setlocal ft=asciidoc
 autocmd BufNewFile,BufRead .tmux.conf                       setlocal ft=tmux
 autocmd BufNewFile,BufRead *.rl                             setlocal ft=ragel
