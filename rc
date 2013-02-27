@@ -184,6 +184,7 @@ set backupdir=~/.vim/tmp/backup
 set directory=~/.vim/tmp/swap
 set backup
 set grepprg=grep\ -nsHRI\ $*
+set keywordprg=man\ -a
 set hidden
 set history=128
 set joinspaces
@@ -203,6 +204,7 @@ autocmd BufNewFile,BufRead *.sls                            setlocal ft=scheme
 autocmd BufNewFile,BufRead *.stp                            setlocal ft=stap
 autocmd BufNewFile,BufRead *.ru,Rakefile,Gemfile,Capfile    setlocal ft=ruby
 autocmd BufNewFile,BufRead *.html                           setlocal ts=2 sw=2
+autocmd BufNewFile,BufRead *.css                            setlocal ts=2 sw=2
 autocmd BufNewFile,BufRead *.asc                            setlocal ft=asciidoc
 autocmd BufNewFile,BufRead .tmux.conf                       setlocal ft=tmux
 autocmd BufNewFile,BufRead *.rl                             setlocal ft=ragel
