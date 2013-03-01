@@ -205,7 +205,7 @@ autocmd BufNewFile,BufRead *.stp                            setlocal ft=stap
 autocmd BufNewFile,BufRead *.ru,Rakefile,Gemfile,Capfile    setlocal ft=ruby
 autocmd BufNewFile,BufRead *.html                           setlocal ts=2 sw=2
 autocmd BufNewFile,BufRead *.css                            setlocal ts=2 sw=2
-autocmd BufNewFile,BufRead *.asc                            setlocal ft=asciidoc
+autocmd BufNewFile,BufRead *.asc,*.asciidoc                 setlocal ft=asciidoc
 autocmd BufNewFile,BufRead .tmux.conf                       setlocal ft=tmux
 autocmd BufNewFile,BufRead *.rl                             setlocal ft=ragel
 autocmd FileType markdown                                   setlocal tw=70 ts=2 sw=2 et wrap fo-=t
