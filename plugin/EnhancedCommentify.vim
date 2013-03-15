@@ -780,7 +780,7 @@ function s:GetFileTypeSettings(ft)
 		\ 'psf\|ptcap\|r\|rack\|radiance\|ratpoison\|readline\remind\|'.
 		\ 'ruby\|screen\|sed\|sm\|snnsnet\|snnspat\|snnsres\|spec\|'.
 		\ 'squid\|terminfo\|tidy\|tli\|tsscl\|vgrindefs\|vrml\|'.
-		\ 'wget\|wml\|xf86conf\|xmath\|stap\)$'
+		\ 'wget\|wml\|xf86conf\|xmath\|stp\)$'
 	let b:ECcommentOpen = '#'
 	let b:ECcommentClose = ''
     elseif fileType == 'webmacro'
@@ -807,8 +807,7 @@ function s:GetFileTypeSettings(ft)
 	let b:ECcommentOpen = "'"
 	let b:ECcommentClose = ''
     elseif fileType =~ '^\(plsql\|vhdl\|ahdl\|ada\|asn\|csp\|eiffel\|gdmo\|'.
-		\ 'haskell\|lace\|lua\|mib\|sather\|sql\|sqlforms\|sqlj\|'.
-		\ 'stp\)$'
+		\ 'haskell\|lace\|lua\|mib\|sather\|sql\|sqlforms\|sqlj\)$'
 	let b:ECcommentOpen = '--'
 	let b:ECcommentClose = ''
     elseif fileType == 'abaqus'
