@@ -174,7 +174,6 @@ function PrintFile(fname)
 endfunc
 
 " system
-set clipboard=unnamed
 set virtualedit=
 set modeline
 set ttyfast
