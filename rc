@@ -71,6 +71,9 @@ vnoremap <silent> k gk
 nnoremap <silent> j gj
 nnoremap <silent> k gk
 
+nnoremap <silent> & :&&<cr>
+xnoremap <silent> & :&&<cr>
+
 nnoremap <m-p> :bp <cr>
 nnoremap <m-n> :bn <cr>
 nnoremap <c-t> xph
