@@ -124,6 +124,7 @@ set list
 " set listchars=tab:\ \ ,trail:·
 set listchars=tab:>-,trail:·
 
+set titleold=
 set ruler
 set rulerformat=%30(%=%y\ %c,%l\ %P%)
 set scrolloff=0
@@ -270,5 +271,37 @@ if has("gui_running")
     highlight String guifg=#ee0000
     highlight Visual guibg=grey
 endif
+
+function! RubyEval() range
+ruby << EOR
+  require 'stringio'
+  first = VIM.evaluate("a:firstline")
+  last = VIM.evaluate("a:lastline")
+  script = (first..last).map do |line|
+    VIM::Buffer.current[line]
+  end.join("\n")
+  $VERBOSE = 0
+  $stderr = $stdout = StringIO.new
+  res = begin
+          eval(script)
+        rescue Exception => ex
+          "#{ex.class}: #{ex.message}"
+        end
+  if $stdout.length
+    $stdout.rewind
+    $stdout.each_line do |line|
+      VIM::Buffer.current.append(last, "# #{line.chomp}")
+      last += 1
+    end
+  end
+  VIM::Buffer.current.append(last, "#=> #{res.inspect}")
+  last += 1
+  VIM::Buffer.current.append(last, "")
+  VIM::Window.current.cursor = [last + 1, 0]
+EOR
+endfunction
+command! -range=% RubyEvalSelection <line1>,<line2> call RubyEval()
+nmap <silent> <leader>me :RubyEvalSelection<cr>
+vmap <silent> <leader>me :RubyEvalSelection<cr>
 
 " vim:ft=vim:
