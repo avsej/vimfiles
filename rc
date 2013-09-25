@@ -211,6 +211,7 @@ autocmd BufNewFile,BufRead *.css                            setlocal ts=2 sw=2
 autocmd BufNewFile,BufRead *.asc,*.asciidoc                 setlocal ft=asciidoc
 autocmd BufNewFile,BufRead .tmux.conf                       setlocal ft=tmux
 autocmd BufNewFile,BufRead *.rl                             setlocal ft=ragel
+autocmd BufNewFile,BufRead *.inc                            setlocal ft=c
 autocmd FileType markdown                                   setlocal tw=70 ts=2 sw=2 et wrap fo-=t
 autocmd FileType ruby,javascript                            setlocal sts=2 ts=2 sw=2 et nu
 autocmd FileType ruby                                       setlocal makeprg=rake
