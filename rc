@@ -253,7 +253,7 @@ autocmd BufReadPost *
             \ if line("'\"") > 1 && line("'\"") <= line("$") |
             \   exe "normal! g`\"" |
             \ endif
-autocmd BufNewFile * silent! 0r ~/.vim/skel/template.%:e
+autocmd BufNewFile * silent! 0r ~/.vim/skel/template.%:e | exe "normal! Gdd"
 autocmd BufWritePre *
             \ if !exists("b:keep_trailing_spaces")  |
             \   exe "normal! mt" |
