@@ -212,6 +212,7 @@ autocmd BufNewFile,BufRead *.asc,*.asciidoc                 setlocal ft=asciidoc
 autocmd BufNewFile,BufRead .tmux.conf                       setlocal ft=tmux
 autocmd BufNewFile,BufRead *.rl                             setlocal ft=ragel
 autocmd BufNewFile,BufRead *.inc                            setlocal ft=c
+autocmd BufNewFile,BufRead *.rs                             setlocal ft=rust
 autocmd FileType markdown                                   setlocal tw=70 ts=2 sw=2 et wrap fo-=t
 autocmd FileType ruby,javascript                            setlocal sts=2 ts=2 sw=2 et nu
 autocmd FileType ruby                                       setlocal makeprg=rake
@@ -220,6 +221,7 @@ autocmd FileType pod                                        setlocal spell
 autocmd FileType c,cpp                                      setlocal ts=8 sw=8 sts=4 noet
 autocmd FileType diff                                       setlocal noeol
 autocmd FileType make                                       setlocal listchars=tab:>-,trail:·
+autocmd FileType rust                                       setlocal sts=4 ts=4 sw=4 et nu
 
 " Transparent editing of gpg encrypted files.
 " By Wouter Hanegraaff
