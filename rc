@@ -120,7 +120,7 @@ set printencoding=utf8
 " display
 set nofoldenable
 set lazyredraw
-set list
+set nolist
 " set listchars=tab:\ \ ,trail:·
 set listchars=tab:>-,trail:·
 
@@ -214,7 +214,7 @@ autocmd BufNewFile,BufRead *.rl                             setlocal ft=ragel
 autocmd BufNewFile,BufRead *.inc                            setlocal ft=c
 autocmd BufNewFile,BufRead *.rs                             setlocal ft=rust
 autocmd FileType markdown                                   setlocal tw=70 ts=2 sw=2 et wrap fo-=t
-autocmd FileType ruby,javascript                            setlocal sts=2 ts=2 sw=2 et nu
+autocmd FileType ruby,javascript                            setlocal sts=2 ts=2 sw=2 et nu list
 autocmd FileType ruby                                       setlocal makeprg=rake
 autocmd FileType tex                                        setlocal sts=2 ts=2 sw=2 et wrap
 autocmd FileType pod                                        setlocal spell
