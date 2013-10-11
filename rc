@@ -214,7 +214,7 @@ autocmd BufNewFile,BufRead *.rl                             setlocal ft=ragel
 autocmd BufNewFile,BufRead *.inc                            setlocal ft=c
 autocmd BufNewFile,BufRead *.rs                             setlocal ft=rust
 autocmd FileType markdown                                   setlocal tw=70 ts=2 sw=2 et wrap fo-=t
-autocmd FileType ruby,javascript                            setlocal sts=2 ts=2 sw=2 et nu list
+autocmd FileType ruby,javascript                            setlocal sts=2 ts=2 sw=2 et nu
 autocmd FileType ruby                                       setlocal makeprg=rake
 autocmd FileType tex                                        setlocal sts=2 ts=2 sw=2 et wrap
 autocmd FileType pod                                        setlocal spell
@@ -283,7 +283,7 @@ ruby << EOR
   script = (first..last).map do |line|
     VIM::Buffer.current[line]
   end.join("\n")
-  $VERBOSE = 0
+  $VERBOSE = nil
   $stderr = $stdout = StringIO.new
   res = begin
           eval(script)
