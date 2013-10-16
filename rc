@@ -278,6 +278,7 @@ endif
 function! RubyEval() range
 ruby << EOR
   require 'stringio'
+  require 'benchmark'
   first = VIM.evaluate("a:firstline")
   last = VIM.evaluate("a:lastline")
   script = (first..last).map do |line|
@@ -285,11 +286,14 @@ ruby << EOR
   end.join("\n")
   $VERBOSE = nil
   $stderr = $stdout = StringIO.new
-  res = begin
-          eval(script)
-        rescue Exception => ex
-          "#{ex.class}: #{ex.message}"
-        end
+  res = nil
+  bm = Benchmark.measure do
+    res = begin
+            eval(script)
+          rescue Exception => ex
+            "#{ex.class}: #{ex.message}"
+          end
+  end
   if $stdout.length
     $stdout.rewind
     $stdout.each_line do |line|
@@ -298,6 +302,8 @@ ruby << EOR
     end
   end
   VIM::Buffer.current.append(last, "#=> #{res.inspect}")
+  last += 1
+  VIM::Buffer.current.append(last, "##{bm.to_s.chomp}")
   last += 1
   VIM::Buffer.current.append(last, "")
   VIM::Window.current.cursor = [last + 1, 0]
