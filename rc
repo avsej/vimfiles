@@ -270,7 +270,7 @@ let g:c_syntax_for_h = 1
 "let g:gist_private = 1
 
 if has("gui_running")
-    highlight Normal guibg=#dedede
+    highlight Normal guibg=#f7f7f7
     highlight String guifg=#ee0000
     highlight Visual guibg=grey
 endif
