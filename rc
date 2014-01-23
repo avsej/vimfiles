@@ -119,6 +119,7 @@ set fileformat=unix
 set printencoding=utf8
 
 " display
+set cursorline
 set nofoldenable
 set lazyredraw
 set nolist
@@ -219,7 +220,7 @@ autocmd FileType ruby,javascript                            setlocal sts=2 ts=2 
 autocmd FileType ruby                                       setlocal makeprg=rake
 autocmd FileType tex                                        setlocal sts=2 ts=2 sw=2 et wrap
 autocmd FileType pod                                        setlocal spell
-autocmd FileType c,cpp                                      setlocal ts=8 sw=8 sts=4 noet
+autocmd FileType c,cpp                                      setlocal ts=4 sw=4 sts=4 noet
 autocmd FileType diff                                       setlocal noeol
 autocmd FileType make                                       setlocal listchars=tab:>-,trail:·
 autocmd FileType rust                                       setlocal sts=4 ts=4 sw=4 et nu
