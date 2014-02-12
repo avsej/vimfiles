@@ -119,7 +119,6 @@ set fileformat=unix
 set printencoding=utf8
 
 " display
-set cursorline
 set nofoldenable
 set lazyredraw
 set nolist
