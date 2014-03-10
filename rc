@@ -53,8 +53,8 @@ inoreabbrev tstamp <c-r>=strftime("%Y-%m-%d %H:%M:%S")
 " mappings
 set pastetoggle=<f12>
 set langmap=йq,цw,уe,кr,еt,нy,гu,шi,щo,зp,х[,ъ],фa,ыs,вd,аf,пg,рh,оj,лk,дl,ж\\;,э',яz,чx,сc,мv,иb,тn,ьm,б\\,,ю.,ё`,ЙQ,ЦW,УE,КR,ЕT,НY,ГU,ШI,ЩO,ЗP,Х{,Ъ},ФA,ЫS,ВD,АF,ПG,РH,ОJ,ЛK,ДL,Ж:,Э\\",ЯZ,ЧX,СC,МV,ИB,ТN,ЬM,Б<,Ю>,Ё~
-vnoremap <f11> :call ToggleKeepTrailingSpaces()<cr>
-nnoremap <f11> :call ToggleKeepTrailingSpaces()<cr>
+vnoremap <f10> :call ToggleKeepTrailingSpaces()<cr>
+nnoremap <f10> :call ToggleKeepTrailingSpaces()<cr>
 function ToggleKeepTrailingSpaces()
     if exists("b:keep_trailing_spaces")
         unlet b:keep_trailing_spaces
@@ -219,7 +219,7 @@ autocmd FileType ruby,javascript                            setlocal sts=2 ts=2 
 autocmd FileType ruby                                       setlocal makeprg=rake
 autocmd FileType tex                                        setlocal sts=2 ts=2 sw=2 et wrap
 autocmd FileType pod                                        setlocal spell
-autocmd FileType c,cpp                                      setlocal ts=4 sw=4 sts=4 noet
+autocmd FileType c,cpp                                      setlocal ts=8 sw=4 sts=4 noet
 autocmd FileType diff                                       setlocal noeol
 autocmd FileType make                                       setlocal listchars=tab:>-,trail:·
 autocmd FileType rust                                       setlocal sts=4 ts=4 sw=4 et nu
@@ -290,9 +290,13 @@ ruby << EOR
   res = nil
   bm = Benchmark.measure do
     res = begin
-            eval(script)
+            "#=> #{eval(script, Object.new.send(:binding), VIM::Buffer.current.name, first).inspect}"
           rescue Exception => ex
-            "#{ex.class}: #{ex.message}"
+            str = "#~> #{ex.class}: #{ex.message}"
+            ex.backtrace[0...-4].each do |entry|
+              str << "\n#~> #{entry}"
+            end
+            str
           end
   end
   if $stdout.length
@@ -302,8 +306,10 @@ ruby << EOR
       last += 1
     end
   end
-  VIM::Buffer.current.append(last, "#=> #{res.inspect}")
-  last += 1
+  res.split("\n").each do |line|
+    VIM::Buffer.current.append(last, line)
+    last += 1
+  end
   VIM::Buffer.current.append(last, "##{bm.to_s.chomp}")
   last += 1
   VIM::Buffer.current.append(last, "")
