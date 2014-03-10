@@ -290,7 +290,7 @@ ruby << EOR
   res = nil
   bm = Benchmark.measure do
     res = begin
-            "#=> #{eval(script, Object.new.send(:binding), VIM::Buffer.current.name, first).inspect}"
+            "#=> #{eval(script, Object.new.send(:binding), VIM::Buffer.current.name || "(noname)", first).inspect}"
           rescue Exception => ex
             str = "#~> #{ex.class}: #{ex.message}"
             ex.backtrace[0...-4].each do |entry|
