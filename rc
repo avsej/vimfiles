@@ -311,6 +311,8 @@ ruby << EOR
     VIM::Buffer.current.append(last, "##{line}")
     last += 1
   end
+  VIM::Buffer.current.append(last, "#      user     system      total        real")
+  last += 1
   VIM::Buffer.current.append(last, "##{bm.to_s.chomp}")
   last += 1
   VIM::Buffer.current.append(last, "")
