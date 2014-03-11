@@ -289,25 +289,26 @@ ruby << EOR
   $stderr = $stdout = StringIO.new
   res = nil
   bm = Benchmark.measure do
-    res = begin
-            "#=> #{eval(script, Object.new.send(:binding), VIM::Buffer.current.name || "(noname)", first).inspect}"
-          rescue Exception => ex
-            str = "#~> #{ex.class}: #{ex.message}"
-            ex.backtrace[0...-4].each do |entry|
-              str << "\n#~> #{entry}"
-            end
-            str
+    res = IO.popen(["ruby", "-w"], "r+", :err => [:child, :out]) do |pipe|
+            pipe.write(<<-SCRIPT)
+              begin
+                puts "=> " + eval(#{script.inspect},
+                                  Object.new.send(:binding),
+                                  #{(VIM::Buffer.current.name || "[No Noname]").inspect},
+                                  #{first}).inspect
+              rescue Exception => ex
+                puts "~> \#{ex.class}: \#{ex.message}"
+                ex.backtrace[0...-2].each do |entry|
+                  puts "~> \#{entry}"
+                end
+              end
+            SCRIPT
+            pipe.close_write
+            pipe.read
           end
   end
-  if $stdout.length
-    $stdout.rewind
-    $stdout.each_line do |line|
-      VIM::Buffer.current.append(last, "# #{line.chomp}")
-      last += 1
-    end
-  end
   res.split("\n").each do |line|
-    VIM::Buffer.current.append(last, line)
+    VIM::Buffer.current.append(last, "##{line}")
     last += 1
   end
   VIM::Buffer.current.append(last, "##{bm.to_s.chomp}")
