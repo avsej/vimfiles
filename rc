@@ -308,7 +308,7 @@ ruby << EOR
           end
   end
   res.split("\n").each do |line|
-    VIM::Buffer.current.append(last, "##{line}")
+    VIM::Buffer.current.append(last, "# #{line}")
     last += 1
   end
   VIM::Buffer.current.append(last, "#      user     system      total        real")
