@@ -294,7 +294,7 @@ ruby << EOR
               begin
                 puts "=> " + eval(#{script.inspect},
                                   Object.new.send(:binding),
-                                  #{(VIM::Buffer.current.name || "[No Noname]").inspect},
+                                  #{(VIM::Buffer.current.name || "[No Name]").inspect},
                                   #{first}).inspect
               rescue Exception => ex
                 puts "~> \#{ex.class}: \#{ex.message}"
