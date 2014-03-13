@@ -131,7 +131,7 @@ set rulerformat=%30(%=%y\ %c,%l\ %P%)
 set scrolloff=0
 set sidescrolloff=0
 set showcmd
-set shortmess=atT
+set shortmess=atTI
 set title
 set winminheight=1
 set noerrorbells
@@ -203,6 +203,7 @@ filetype plugin on
 filetype indent on
 syntax enable
 
+autocmd BufEnter * if &filetype == "" | setlocal ft=ruby | endif
 autocmd BufNewFile,BufRead *.ru,Rakefile,Gemfile,Capfile,Vagrantfile    setlocal ft=ruby
 autocmd BufNewFile,BufRead *.pp                             setlocal ft=puppet
 autocmd BufNewFile,BufRead *.s                              setlocal ft=gasm
